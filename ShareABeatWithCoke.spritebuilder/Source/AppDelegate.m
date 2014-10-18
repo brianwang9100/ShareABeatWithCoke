@@ -29,7 +29,7 @@
 #import "CCBuilderReader.h"
 #import "MainScene.h"
 static NSString * const kClientId = @"aeb4dafe32e0434d8347bc9d4abf09cd";
-static NSString * const kCallbackURL = @"ShareABeatWithCoke://";
+static NSString * const kCallbackURL = @"ShareABeatWithCoke://callback";
 static NSString * const kTokenSwapURL = @"http://localhost:1234/swap";
 @implementation AppController
 {
@@ -65,7 +65,7 @@ static NSString * const kTokenSwapURL = @"http://localhost:1234/swap";
     //ECHONEST STUFF
     [ENAPIRequest setApiKey:@"3XDU9UD8ACYFXQQG1"];
     
-    // Create SPTAuth instance; create login URL and open it
+    //Create SPTAuth instance; create login URL and open it
 //    SPTAuth *auth = [SPTAuth defaultInstance];
 //    NSURL *loginURL = [auth loginURLForClientId:kClientId
 //                            declaredRedirectURL:[NSURL URLWithString:kCallbackURL]
@@ -75,7 +75,7 @@ static NSString * const kTokenSwapURL = @"http://localhost:1234/swap";
 //    // an iOS bug, so we wait a bit before doing so.
 //    [application performSelector:@selector(openURL:)
 //                      withObject:loginURL afterDelay:0.1];
-
+//
     
     return YES;
 }

@@ -179,7 +179,7 @@
 -(void) launchBubbleWithBeat: (BubbleBeat*) beat
 {
     Bubble* currentBubble = [CCBReader load:@"Bubble"];
-    currentBubble.position = ccp(,0);
+    //currentBubble.position = ccp(,0);
     currentBubble.thisBeat = beat;
     
 }
