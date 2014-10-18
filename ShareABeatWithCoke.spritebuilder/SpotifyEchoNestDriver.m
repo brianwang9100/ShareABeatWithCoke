@@ -7,11 +7,12 @@
 //
 
 #import "SpotifyEchoNestDriver.h"
-
+static NSString * const kClientId = @"aeb4dafe32e0434d8347bc9d4abf09cd";
+static NSString * const kCallbackURL = @"ShareABeatWithCoke://callback";
+static NSString * const kTokenSwapURL = @"http://localhost:1234/swap";
 @implementation SpotifyEchoNestDriver
 {
     NSMutableArray* _playList;
-    NSDictionary* _currentSong;
 }
 
 -(void) loadPlayListWithSong: (ENAPIRequest*)request
@@ -54,20 +55,20 @@
     [params setValue:song forKey:@"id"];
     [params setValue:@"audio_summary" forKey:@"bucket"];
     [ENAPIRequest GETWithEndpoint:@"track/profile"
-                    andParameters:params
+                andParameters:params
                andCompletionBlock:^(ENAPIRequest *request) {
                    [self extractAnalysisURL: request];
                }];
 }
--(NSString*) extractAnalysisURL: (ENAPIRequest*) request
+
+-(void) extractAnalysisURL: (ENAPIRequest*) request
 {
-    return [[[request.response valueForKey:@"track"] valueForKey:@"audio_summary"] valueForKey:@"analysis_url"];
+    _currentAnalysisURL = [[[request.response valueForKey:@"track"] valueForKey:@"audio_summary"] valueForKey:@"analysis_url"];
 }
 
 -(void) loadNextSong
 {
     [_playList removeObjectAtIndex:0];
-    _currentSong = _playList[0];
 }
 
 -(NSArray*) retrieveSongDataSegments: (NSString*) analysisURL
@@ -79,8 +80,49 @@
     return [json valueForKey:@"segments"];
 }
 
+-(NSArray*) retrieveSongDataBeats: (NSString*) analysisURL
+{
+    NSURL* url=[NSURL URLWithString: analysisURL];   // pass your URL  Here.
+    NSData* data=[NSData dataWithContentsOfURL:url];
+    NSError* error;
+    NSMutableDictionary* json = [NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error: &error];
+    return [json valueForKey:@"beats"];
+}
+
+
 -(void) playSongFromURL: (NSString*) url
 {
+    MyManager* manager = [MyManager sharedManager];
+    [self playUsingSession:manager.session andURL:url];
+}
+
+-(void)playUsingSession:(SPTSession *)session andURL: (NSString*) url
+{
+    
+    // Create a new player if needed
+    if (self.player == nil) {
+        self.player = [SPTAudioStreamingController new];
+    }
+    
+    [self.player loginWithSession:session callback:^(NSError *error)
+    {
+        
+        if (error != nil) {
+            NSLog(@"*** Enabling playback got error: %@", error);
+            return;
+        }
+        
+        [SPTRequest requestItemAtURI:[NSURL URLWithString:url] withSession:nil callback:^(NSError *error, SPTTrack* track)
+        {
+                                
+            if (error != nil)
+            {
+                NSLog(@"*** Album lookup got error %@", error);
+                return;
+            }
+            [self.player playTrackProvider:track callback:nil];
+        }];
+    }];
     
 }
 

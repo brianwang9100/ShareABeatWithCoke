@@ -49,6 +49,8 @@
     float _beatLength;
     BOOL _percentageAlreadySubtracted;
     
+    SpotifyEchoNestDriver *_soundDriver;
+    
 }
 
 -(void) didLoadFromCCB
@@ -74,6 +76,8 @@
     _bubbleBeatRecognized = FALSE;
     _beatLength = 1;
     _percentageAlreadySubtracted = FALSE;
+    
+    _soundDriver = [SpotifyEchoNestDriver alloc];
 }
 
 -(void) update:(CCTime)delta
@@ -176,6 +180,7 @@
     }
 }
 
+//TODO: FIX LAUNCHING OF BUBBLE
 -(void) launchBubbleWithBeat: (BubbleBeat*) beat
 {
     Bubble* currentBubble = [CCBReader load:@"Bubble"];
@@ -184,21 +189,15 @@
     
 }
 
--(void) loadSong
+-(void) loadNextSong
 {
-    
-}
-
--(void) delayWaveMessage
-{
-    if (_tutorialMode)
-    {
-        _bubbleBeatMessage.string = @"TUTORIAL COMPLETE";
-    }
-    else
-    {
-        _bubbleBeatMessage.string = @"WAVE COMPLETE";
-    }
+    [_queue removeAllObjects];
+    [_soundDriver loadNextSong];
+    [self generateBeatForSong];
+    _timer.currentTime = 0;
+    _bubbleBeatTimeStamp = 0;
+    _currentNumOfBeats = 0;
+    [_soundDriver playSongFromURL:[_soundDriver extractSpotifySongFromRequest]];
 }
 
 -(void) delayAllowanceOfBubbleBeat
@@ -369,7 +368,16 @@
 }
 -(void) generateBeatForSong
 {
+    [_soundDriver requestSongFromEchoNestRadio];
+    [_soundDriver requestAnalaysisURL:[_soundDriver extractSpotifySongFromRequest]];
+    NSString* analysisURL = _soundDriver.currentAnalysisURL;
+    //NSArray* beatArray = [_soundDriver retrieveSongDataBeats:analysisURL];
+    NSArray* segmentArray =[_soundDriver retrieveSongDataSegments:analysisURL];
     
+    for (NSDictionary* e in segmentArray)
+    {
+        
+    }
 }
 
 -(void) loadNewBubbleBeat
