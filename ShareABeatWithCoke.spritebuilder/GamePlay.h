@@ -12,6 +12,8 @@
 #import "Timer.h"
 #import "BubbleBeat.h"
 #import "Bubble.h"
+#import "ENAPI.h"
+#import "ENAPIRequest.h"
 @interface GamePlay : CCScene
 
 @end

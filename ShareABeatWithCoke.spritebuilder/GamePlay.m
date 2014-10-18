@@ -171,6 +171,11 @@
     }
 }
 
+-(void) loadSong
+{
+    
+}
+
 -(void) delayWaveMessage
 {
     if (_tutorialMode)

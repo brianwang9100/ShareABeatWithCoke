@@ -7,7 +7,10 @@
 //
 
 #import "CCNode.h"
+#import "ENAPI.h"
+#import <Spotify/Spotify.h>
 
 @interface MainScene : CCNode
+@property (nonatomic, strong) SPTAudioStreamingController *player;
 
 @end

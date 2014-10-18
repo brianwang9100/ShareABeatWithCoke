@@ -559,6 +559,7 @@
 					"\"Source/libs/cocos2d-iphone/cocos2d-ui\"/**",
 					"\"Source/libs/cocos2d-iphone/external/ObjectAL\"/**",
 					"\"Source/libs/ENAPILibrary/ENAPILibrary\"/**",
+					"\"${SRCROOT}\"/..",
 				);
 				INFOPLIST_FILE = Source/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
@@ -596,6 +597,7 @@
 					"\"Source/libs/cocos2d-iphone/cocos2d-ui\"/**",
 					"\"Source/libs/cocos2d-iphone/external/ObjectAL\"/**",
 					"\"Source/libs/ENAPILibrary/ENAPILibrary\"/**",
+					"\"${SRCROOT}\"/..",
 				);
 				INFOPLIST_FILE = Source/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
