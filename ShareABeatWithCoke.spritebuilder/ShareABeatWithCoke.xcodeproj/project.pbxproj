@@ -40,6 +40,9 @@
 		DFDCB79C19F22211007178E2 /* GamePlay.m in Sources */ = {isa = PBXBuildFile; fileRef = DFDCB79B19F22211007178E2 /* GamePlay.m */; };
 		DFDCB7A019F22222007178E2 /* GenreSelect.m in Sources */ = {isa = PBXBuildFile; fileRef = DFDCB79F19F22222007178E2 /* GenreSelect.m */; };
 		DFDCB7A319F22232007178E2 /* PostGamePopUp.m in Sources */ = {isa = PBXBuildFile; fileRef = DFDCB7A219F22232007178E2 /* PostGamePopUp.m */; };
+		DFDCB7A819F2250E007178E2 /* Bubble.m in Sources */ = {isa = PBXBuildFile; fileRef = DFDCB7A719F2250E007178E2 /* Bubble.m */; };
+		DFDCB7AB19F22527007178E2 /* ComboBar.m in Sources */ = {isa = PBXBuildFile; fileRef = DFDCB7AA19F22527007178E2 /* ComboBar.m */; };
+		DFDCB7AE19F226E5007178E2 /* SongBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = DFDCB7AD19F226E5007178E2 /* SongBubble.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +105,12 @@
 		DFDCB79F19F22222007178E2 /* GenreSelect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenreSelect.m; sourceTree = "<group>"; };
 		DFDCB7A119F22232007178E2 /* PostGamePopUp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostGamePopUp.h; sourceTree = "<group>"; };
 		DFDCB7A219F22232007178E2 /* PostGamePopUp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostGamePopUp.m; sourceTree = "<group>"; };
+		DFDCB7A619F2250E007178E2 /* Bubble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bubble.h; sourceTree = "<group>"; };
+		DFDCB7A719F2250E007178E2 /* Bubble.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bubble.m; sourceTree = "<group>"; };
+		DFDCB7A919F22527007178E2 /* ComboBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComboBar.h; sourceTree = "<group>"; };
+		DFDCB7AA19F22527007178E2 /* ComboBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComboBar.m; sourceTree = "<group>"; };
+		DFDCB7AC19F226E5007178E2 /* SongBubble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongBubble.h; sourceTree = "<group>"; };
+		DFDCB7AD19F226E5007178E2 /* SongBubble.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongBubble.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +157,12 @@
 				DFDCB79F19F22222007178E2 /* GenreSelect.m */,
 				DFDCB7A119F22232007178E2 /* PostGamePopUp.h */,
 				DFDCB7A219F22232007178E2 /* PostGamePopUp.m */,
+				DFDCB7A619F2250E007178E2 /* Bubble.h */,
+				DFDCB7A719F2250E007178E2 /* Bubble.m */,
+				DFDCB7AC19F226E5007178E2 /* SongBubble.h */,
+				DFDCB7AD19F226E5007178E2 /* SongBubble.m */,
+				DFDCB7A919F22527007178E2 /* ComboBar.h */,
+				DFDCB7AA19F22527007178E2 /* ComboBar.m */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -363,10 +378,13 @@
 			files = (
 				B737893F1807617C0076A88C /* AppDelegate.m in Sources */,
 				DFDCB79C19F22211007178E2 /* GamePlay.m in Sources */,
+				DFDCB7AB19F22527007178E2 /* ComboBar.m in Sources */,
 				B7378994180767190076A88C /* MainScene.m in Sources */,
 				DFDCB7A019F22222007178E2 /* GenreSelect.m in Sources */,
 				DFDCB7A319F22232007178E2 /* PostGamePopUp.m in Sources */,
 				B73789871807631A0076A88C /* main.m in Sources */,
+				DFDCB7A819F2250E007178E2 /* Bubble.m in Sources */,
+				DFDCB7AE19F226E5007178E2 /* SongBubble.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
