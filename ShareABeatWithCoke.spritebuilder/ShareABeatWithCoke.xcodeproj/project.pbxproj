@@ -47,6 +47,7 @@
 		DFDCB7B419F238DB007178E2 /* BubbleBeat.m in Sources */ = {isa = PBXBuildFile; fileRef = DFDCB7B319F238DB007178E2 /* BubbleBeat.m */; };
 		DFDCB7D619F256D6007178E2 /* libENAPILibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DFDCB7D119F25629007178E2 /* libENAPILibrary.a */; settings = {ATTRIBUTES = (Required, ); }; };
 		DFDCB7D819F25703007178E2 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFDCB7D719F25703007178E2 /* MediaPlayer.framework */; };
+		DFDCB81C19F2D553007178E2 /* SpotifyEchoNestDriver.m in Sources */ = {isa = PBXBuildFile; fileRef = DFDCB81B19F2D553007178E2 /* SpotifyEchoNestDriver.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -142,6 +143,8 @@
 		DFDCB7B319F238DB007178E2 /* BubbleBeat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BubbleBeat.m; sourceTree = "<group>"; };
 		DFDCB7CB19F25629007178E2 /* ENAPILibrary.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ENAPILibrary.xcodeproj; path = Source/libs/ENAPILibrary/ENAPILibrary.xcodeproj; sourceTree = "<group>"; };
 		DFDCB7D719F25703007178E2 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		DFDCB81A19F2D553007178E2 /* SpotifyEchoNestDriver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpotifyEchoNestDriver.h; sourceTree = "<group>"; };
+		DFDCB81B19F2D553007178E2 /* SpotifyEchoNestDriver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotifyEchoNestDriver.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +188,8 @@
 				B737893E1807617C0076A88C /* AppDelegate.m */,
 				B7378992180767190076A88C /* MainScene.h */,
 				B7378993180767190076A88C /* MainScene.m */,
+				DFDCB81A19F2D553007178E2 /* SpotifyEchoNestDriver.h */,
+				DFDCB81B19F2D553007178E2 /* SpotifyEchoNestDriver.m */,
 				DFDCB79A19F22211007178E2 /* GamePlay.h */,
 				DFDCB79B19F22211007178E2 /* GamePlay.m */,
 				DFDCB7AF19F237D6007178E2 /* Timer.h */,
@@ -452,6 +457,7 @@
 				DFDCB7B419F238DB007178E2 /* BubbleBeat.m in Sources */,
 				DFDCB7A319F22232007178E2 /* PostGamePopUp.m in Sources */,
 				B73789871807631A0076A88C /* main.m in Sources */,
+				DFDCB81C19F2D553007178E2 /* SpotifyEchoNestDriver.m in Sources */,
 				DFDCB7A819F2250E007178E2 /* Bubble.m in Sources */,
 				DFDCB7AE19F226E5007178E2 /* SongBubble.m in Sources */,
 			);

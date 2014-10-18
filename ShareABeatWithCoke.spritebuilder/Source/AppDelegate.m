@@ -33,13 +33,10 @@ static NSString * const kCallbackURL = @"ShareABeatWithCoke://callback";
 static NSString * const kTokenSwapURL = @"http://localhost:1234/swap";
 @implementation AppController
 {
-    UIApplication* _thisApplication;
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    _thisApplication = application;
-    
     // Configure Cocos2d with the options set in SpriteBuilder
     NSString* configPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Published-iOS"]; // TODO: add support for Published-Android support
     configPath = [configPath stringByAppendingPathComponent:@"configCocos2d.plist"];
@@ -86,8 +83,8 @@ static NSString * const kTokenSwapURL = @"http://localhost:1234/swap";
         annotation:(id)annotation {
     
     // Ask SPTAuth if the URL given is a Spotify authentication callback
-    if ([[SPTAuth defaultInstance] canHandleURL:url withDeclaredRedirectURL:[NSURL URLWithString:kCallbackURL]]) {
-        
+//    if ([[SPTAuth defaultInstance] canHandleURL:url withDeclaredRedirectURL:[NSURL URLWithString:kCallbackURL]]) {
+    
         // Call the token swap service to get a logged in session
         [[SPTAuth defaultInstance]
          handleAuthCallbackWithTriggeredAuthURL:url
@@ -98,41 +95,42 @@ static NSString * const kTokenSwapURL = @"http://localhost:1234/swap";
                  NSLog(@"*** Auth error: %@", error);
                  return;
              }
+             [self playUsingSession:session];
          }];
-        return YES;
-    }
+//        return YES;
+//    }
     
     return NO;
 }
 
-//-(void)playUsingSession:(SPTSession *)session {
-//    
-//    // Create a new player if needed
-//    if (self.player == nil) {
-//        self.player = [SPTAudioStreamingController new];
-//    }
-//    
-//    [self.player loginWithSession:session callback:^(NSError *error) {
-//        
-//        if (error != nil) {
-//            NSLog(@"*** Enabling playback got error: %@", error);
-//            return;
-//        }
-//        
-//        [SPTRequest requestItemAtURI:[NSURL URLWithString:@"spotify:album:4L1HDyfdGIkACuygktO7T7"]
-//                         withSession:nil
-//                            callback:^(NSError *error, SPTAlbum *album) {
-//                                
-//                                if (error != nil) {
-//                                    NSLog(@"*** Album lookup got error %@", error);
-//                                    return;
-//                                }
-//                                [self.player playTrackProvider:album callback:nil];
-//                                
-//                            }];
-//    }];
-//    
-//}
+-(void)playUsingSession:(SPTSession *)session {
+    
+    // Create a new player if needed
+    if (self.player == nil) {
+        self.player = [SPTAudioStreamingController new];
+    }
+    
+    [self.player loginWithSession:session callback:^(NSError *error) {
+        
+        if (error != nil) {
+            NSLog(@"*** Enabling playback got error: %@", error);
+            return;
+        }
+        
+        [SPTRequest requestItemAtURI:[NSURL URLWithString:@"spotify:album:4L1HDyfdGIkACuygktO7T7"]
+                         withSession:nil
+                            callback:^(NSError *error, SPTAlbum *album) {
+                                
+                                if (error != nil) {
+                                    NSLog(@"*** Album lookup got error %@", error);
+                                    return;
+                                }
+                                [self.player playTrackProvider:album callback:nil];
+                                
+                            }];
+    }];
+    
+}
 
 
 - (CCScene*) startScene
