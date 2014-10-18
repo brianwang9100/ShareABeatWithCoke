@@ -7,6 +7,7 @@
 //
 
 #import "GamePlay.h"
+#define ARC4RANDOM_MAX 0x100000000
 
 @implementation GamePlay
 {
@@ -36,6 +37,7 @@
     BOOL _comboMode;
     
     NSMutableArray *_queue;
+    NSMutableArray *_bubbleArray;
     
     int _comboBarSize;
     
@@ -54,6 +56,9 @@
     self.userInteractionEnabled = FALSE;
     _bubbleBeatMessage.string = @"";
     _defaults = [NSUserDefaults standardUserDefaults];
+    
+    _queue = [NSArray arrayWithObjects: nil];
+    _bubbleArray = [NSArray arrayWithObjects: nil];
     
     _timer = [Timer alloc];
     
@@ -171,6 +176,14 @@
     }
 }
 
+-(void) launchBubbleWithBeat: (BubbleBeat*) beat
+{
+    Bubble* currentBubble = [CCBReader load:@"Bubble"];
+    currentBubble.position = ccp(,0);
+    currentBubble.thisBeat = beat;
+    
+}
+
 -(void) loadSong
 {
     
@@ -192,6 +205,25 @@
 {
     _bubbleBeatRecognized  = FALSE;
     _allowBubbleBeat = TRUE;
+}
+
+-(void) touchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
+    for (Bubble* e in _bubbleArray)
+    {
+        if ([self containsExactTouchLocation:[touch locationInNode:self] withObject:e])
+        {
+            [self popBubble: e];
+            break;
+        }
+    }
+}
+
+-(BOOL) containsExactTouchLocation: (CGPoint)location withObject: (CCNode*) object
+{
+    CGPoint p = [object convertToNodeSpaceAR: location];
+    CGSize size =  object.contentSize;
+    CGRect r = CGRectMake (-size.width*.5, -size.height*.5, size.width, size.height);
+    return CGRectContainsPoint(r,p);
 }
 
 -(void) popBubble: (Bubble*) bubble
