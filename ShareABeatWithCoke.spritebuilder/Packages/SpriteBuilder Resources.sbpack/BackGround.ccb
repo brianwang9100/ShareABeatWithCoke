@@ -1163,7 +1163,7 @@
 										<key>value</key>
 										<array>
 											<real>0.5</real>
-											<real>30</real>
+											<real>5</real>
 											<integer>1</integer>
 											<integer>2</integer>
 											<integer>0</integer>
@@ -1191,6 +1191,8 @@
 										<string>Particles/FizzParticle.ccb</string>
 									</dict>
 								</array>
+								<key>selected</key>
+								<true/>
 							</dict>
 						</array>
 						<key>customClass</key>
@@ -1483,8 +1485,6 @@
 				</array>
 			</dict>
 		</array>
-		<key>selected</key>
-		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>
