@@ -46,6 +46,7 @@
     BOOL _allowBubbleBeat;
     float _beatLength;
     BOOL _percentageAlreadySubtracted;
+    
 }
 
 -(void) didLoadFromCCB
