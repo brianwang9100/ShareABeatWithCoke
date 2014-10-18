@@ -69,6 +69,17 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>ShareABeatWithCoke</string>
+			</array>
+			<key>CFBundleURLName</key>
+			<string>com.bigwangsmash.ShareABeatWithCoke</string>
+		</dict>
+	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 </dict>

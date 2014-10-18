@@ -27,7 +27,7 @@
 #import "cocos2d.h"
 
 @interface AppController : CCAppDelegate
-{
-}
+@property (nonatomic, strong) SPTSession *session;
+@property (nonatomic, strong) SPTAudioStreamingController *player;
 
 @end
