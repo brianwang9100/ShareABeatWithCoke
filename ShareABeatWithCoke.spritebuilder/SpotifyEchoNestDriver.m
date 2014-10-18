@@ -56,12 +56,12 @@
     [ENAPIRequest GETWithEndpoint:@"track/profile"
                     andParameters:params
                andCompletionBlock:^(ENAPIRequest *request) {
-                   [self loadPlayListWithSong:request];
+                   [self extractAnalysisURL: request];
                }];
 }
 -(NSString*) extractAnalysisURL: (ENAPIRequest*) request
 {
-    
+    return [[[request.response valueForKey:@"track"] valueForKey:@"audio_summary"] valueForKey:@"analysis_url"];
 }
 
 -(void) loadNextSong
@@ -70,9 +70,13 @@
     _currentSong = _playList[0];
 }
 
--(NSDictionary*) retrieveSongData: (NSString*) songURL
+-(NSArray*) retrieveSongDataSegments: (NSString*) analysisURL
 {
-    
+    NSURL* url=[NSURL URLWithString: analysisURL];   // pass your URL  Here.
+    NSData* data=[NSData dataWithContentsOfURL:url];
+    NSError* error;
+    NSMutableDictionary* json = [NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error: &error];
+    return [json valueForKey:@"segments"];
 }
 
 -(void) playSongFromURL: (NSString*) url
