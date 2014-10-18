@@ -37,6 +37,9 @@
 		B77F1B4017B978D7009739AE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B77F1B3F17B978D7009739AE /* CoreGraphics.framework */; };
 		B77F1B4217B978D7009739AE /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B77F1B4117B978D7009739AE /* CoreText.framework */; };
 		DFDCB79519F1F665007178E2 /* Spotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFDCB79419F1F665007178E2 /* Spotify.framework */; };
+		DFDCB79C19F22211007178E2 /* GamePlay.m in Sources */ = {isa = PBXBuildFile; fileRef = DFDCB79B19F22211007178E2 /* GamePlay.m */; };
+		DFDCB7A019F22222007178E2 /* GenreSelect.m in Sources */ = {isa = PBXBuildFile; fileRef = DFDCB79F19F22222007178E2 /* GenreSelect.m */; };
+		DFDCB7A319F22232007178E2 /* PostGamePopUp.m in Sources */ = {isa = PBXBuildFile; fileRef = DFDCB7A219F22232007178E2 /* PostGamePopUp.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +96,12 @@
 		B7B3713D180358F1007369CC /* libObjectiveChipmunk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libObjectiveChipmunk.a; path = "../libs/cocos2d-iphone/external/Chipmunk/xcode/build/Debug-iphoneos/libObjectiveChipmunk.a"; sourceTree = "<group>"; };
 		DFDCB79419F1F665007178E2 /* Spotify.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Spotify.framework; path = "../../../Downloads/ios-sdk-beta-5/Spotify.framework"; sourceTree = "<group>"; };
 		DFDCB79619F217F0007178E2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DFDCB79A19F22211007178E2 /* GamePlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GamePlay.h; sourceTree = "<group>"; };
+		DFDCB79B19F22211007178E2 /* GamePlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GamePlay.m; sourceTree = "<group>"; };
+		DFDCB79E19F22222007178E2 /* GenreSelect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenreSelect.h; sourceTree = "<group>"; };
+		DFDCB79F19F22222007178E2 /* GenreSelect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenreSelect.m; sourceTree = "<group>"; };
+		DFDCB7A119F22232007178E2 /* PostGamePopUp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostGamePopUp.h; sourceTree = "<group>"; };
+		DFDCB7A219F22232007178E2 /* PostGamePopUp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostGamePopUp.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +142,12 @@
 				B737893E1807617C0076A88C /* AppDelegate.m */,
 				B7378992180767190076A88C /* MainScene.h */,
 				B7378993180767190076A88C /* MainScene.m */,
+				DFDCB79A19F22211007178E2 /* GamePlay.h */,
+				DFDCB79B19F22211007178E2 /* GamePlay.m */,
+				DFDCB79E19F22222007178E2 /* GenreSelect.h */,
+				DFDCB79F19F22222007178E2 /* GenreSelect.m */,
+				DFDCB7A119F22232007178E2 /* PostGamePopUp.h */,
+				DFDCB7A219F22232007178E2 /* PostGamePopUp.m */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -347,7 +362,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B737893F1807617C0076A88C /* AppDelegate.m in Sources */,
+				DFDCB79C19F22211007178E2 /* GamePlay.m in Sources */,
 				B7378994180767190076A88C /* MainScene.m in Sources */,
+				DFDCB7A019F22222007178E2 /* GenreSelect.m in Sources */,
+				DFDCB7A319F22232007178E2 /* PostGamePopUp.m in Sources */,
 				B73789871807631A0076A88C /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
