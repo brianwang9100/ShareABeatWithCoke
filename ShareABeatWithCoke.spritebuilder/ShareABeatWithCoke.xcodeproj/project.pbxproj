@@ -45,6 +45,8 @@
 		DFDCB7AE19F226E5007178E2 /* SongBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = DFDCB7AD19F226E5007178E2 /* SongBubble.m */; };
 		DFDCB7B119F237D6007178E2 /* Timer.m in Sources */ = {isa = PBXBuildFile; fileRef = DFDCB7B019F237D6007178E2 /* Timer.m */; };
 		DFDCB7B419F238DB007178E2 /* BubbleBeat.m in Sources */ = {isa = PBXBuildFile; fileRef = DFDCB7B319F238DB007178E2 /* BubbleBeat.m */; };
+		DFDCB7D619F256D6007178E2 /* libENAPILibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DFDCB7D119F25629007178E2 /* libENAPILibrary.a */; settings = {ATTRIBUTES = (Required, ); }; };
+		DFDCB7D819F25703007178E2 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFDCB7D719F25703007178E2 /* MediaPlayer.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,27 @@
 			proxyType = 1;
 			remoteGlobalIDString = 5018F24C0DFDEAC400C013A5;
 			remoteInfo = cocos2d;
+		};
+		DFDCB7D019F25629007178E2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DFDCB7CB19F25629007178E2 /* ENAPILibrary.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7EE1165416A3212F00A62D4D;
+			remoteInfo = ENAPILibrary;
+		};
+		DFDCB7D219F25629007178E2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DFDCB7CB19F25629007178E2 /* ENAPILibrary.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7EE1166516A3213000A62D4D;
+			remoteInfo = ENAPILibraryTests;
+		};
+		DFDCB7D419F256CC007178E2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DFDCB7CB19F25629007178E2 /* ENAPILibrary.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 7EE1165316A3212F00A62D4D;
+			remoteInfo = ENAPILibrary;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -117,6 +140,8 @@
 		DFDCB7B019F237D6007178E2 /* Timer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Timer.m; sourceTree = "<group>"; };
 		DFDCB7B219F238DB007178E2 /* BubbleBeat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BubbleBeat.h; sourceTree = "<group>"; };
 		DFDCB7B319F238DB007178E2 /* BubbleBeat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BubbleBeat.m; sourceTree = "<group>"; };
+		DFDCB7CB19F25629007178E2 /* ENAPILibrary.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ENAPILibrary.xcodeproj; path = Source/libs/ENAPILibrary/ENAPILibrary.xcodeproj; sourceTree = "<group>"; };
+		DFDCB7D719F25703007178E2 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +149,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DFDCB7D819F25703007178E2 /* MediaPlayer.framework in Frameworks */,
+				DFDCB7D619F256D6007178E2 /* libENAPILibrary.a in Frameworks */,
 				B77F1B3A17B978D7009739AE /* AVFoundation.framework in Frameworks */,
 				8392007A18EE8E3300B6C429 /* GLKit.framework in Frameworks */,
 				B737898A1807642B0076A88C /* libcocos2d.a in Frameworks */,
@@ -145,6 +172,7 @@
 		9222E2B918734FF800A246C7 /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				DFDCB7CB19F25629007178E2 /* ENAPILibrary.xcodeproj */,
 				B7378940180761A80076A88C /* cocos2d-ios.xcodeproj */,
 			);
 			name = libs;
@@ -229,6 +257,7 @@
 		B77F1B3017B978D7009739AE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DFDCB7D719F25703007178E2 /* MediaPlayer.framework */,
 				DFDCB79419F1F665007178E2 /* Spotify.framework */,
 				8392007918EE8E3300B6C429 /* GLKit.framework */,
 				B7B3713D180358F1007369CC /* libObjectiveChipmunk.a */,
@@ -265,6 +294,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		DFDCB7CC19F25629007178E2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DFDCB7D119F25629007178E2 /* libENAPILibrary.a */,
+				DFDCB7D319F25629007178E2 /* ENAPILibraryTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -280,6 +318,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				DFDCB7D519F256CC007178E2 /* PBXTargetDependency */,
 				B7378989180764180076A88C /* PBXTargetDependency */,
 			);
 			name = ShareABeatWithCoke;
@@ -321,6 +360,10 @@
 					ProductGroup = B7378941180761A80076A88C /* Products */;
 					ProjectRef = B7378940180761A80076A88C /* cocos2d-ios.xcodeproj */;
 				},
+				{
+					ProductGroup = DFDCB7CC19F25629007178E2 /* Products */;
+					ProjectRef = DFDCB7CB19F25629007178E2 /* ENAPILibrary.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -335,6 +378,20 @@
 			fileType = archive.ar;
 			path = libcocos2d.a;
 			remoteRef = B737894A180761A90076A88C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		DFDCB7D119F25629007178E2 /* libENAPILibrary.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libENAPILibrary.a;
+			remoteRef = DFDCB7D019F25629007178E2 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		DFDCB7D319F25629007178E2 /* ENAPILibraryTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ENAPILibraryTests.octest;
+			remoteRef = DFDCB7D219F25629007178E2 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -407,6 +464,11 @@
 			isa = PBXTargetDependency;
 			name = cocos2d;
 			targetProxy = B7378988180764180076A88C /* PBXContainerItemProxy */;
+		};
+		DFDCB7D519F256CC007178E2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ENAPILibrary;
+			targetProxy = DFDCB7D419F256CC007178E2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -496,6 +558,7 @@
 					"Source/libs/cocos2d-iphone/external/Chipmunk/include",
 					"\"Source/libs/cocos2d-iphone/cocos2d-ui\"/**",
 					"\"Source/libs/cocos2d-iphone/external/ObjectAL\"/**",
+					"\"Source/libs/ENAPILibrary/ENAPILibrary\"/**",
 				);
 				INFOPLIST_FILE = Source/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
@@ -532,6 +595,7 @@
 					"Source/libs/cocos2d-iphone/external/Chipmunk/include",
 					"\"Source/libs/cocos2d-iphone/cocos2d-ui\"/**",
 					"\"Source/libs/cocos2d-iphone/external/ObjectAL\"/**",
+					"\"Source/libs/ENAPILibrary/ENAPILibrary\"/**",
 				);
 				INFOPLIST_FILE = Source/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;

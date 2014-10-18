@@ -56,6 +56,9 @@ static NSString * const kTokenSwapURL = @"http://localhost:1234/swap";
     
     [self setupCocos2dWithOptions:cocos2dSetup];
     
+    //ECHONEST STUFF
+    [ENAPIRequest setApiKey:@"3XDU9UD8ACYFXQQG1 "];
+    
     // Create SPTAuth instance; create login URL and open it
     SPTAuth *auth = [SPTAuth defaultInstance];
     NSURL *loginURL = [auth loginURLForClientId:kClientId

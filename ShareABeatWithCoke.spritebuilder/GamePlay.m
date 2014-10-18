@@ -67,7 +67,7 @@
     
     _bubbleBeatTimeStamp = 0;
     _bubbleBeatRecognized = FALSE;
-    _beatLength = .7;
+    _beatLength = 1;
     _percentageAlreadySubtracted = FALSE;
 }
 
@@ -338,19 +338,6 @@
 -(void) loadNewBubbleBeat
 {
     [_queue removeObjectAtIndex: 0];
-    NSArray *generatedBubbleBeat = nil;
-    switch (arc4random()%4)
-    {
-        case 0: generatedBubbleBeat = _fourSlap;
-            break;
-        case 1: generatedBubbleBeat = _threeSlapOneDouble;
-            break;
-        case 2: generatedBubbleBeat = _twoDoubleOneTriple;
-            break;
-        case 3: generatedBubbleBeat = _twoSlapOneDown;
-            break;
-    }
-    [_queue addObject: generatedBubbleBeat];
 
 }
 

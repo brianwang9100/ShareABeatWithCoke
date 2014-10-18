@@ -24,7 +24,9 @@
  */
 
 #import <UIKit/UIKit.h>
+#import "ENAPI.h"
 #import "cocos2d.h"
+
 
 @interface AppController : CCAppDelegate
 @property (nonatomic, strong) SPTSession *session;
