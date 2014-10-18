@@ -43,6 +43,8 @@
 		DFDCB7A819F2250E007178E2 /* Bubble.m in Sources */ = {isa = PBXBuildFile; fileRef = DFDCB7A719F2250E007178E2 /* Bubble.m */; };
 		DFDCB7AB19F22527007178E2 /* ComboBar.m in Sources */ = {isa = PBXBuildFile; fileRef = DFDCB7AA19F22527007178E2 /* ComboBar.m */; };
 		DFDCB7AE19F226E5007178E2 /* SongBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = DFDCB7AD19F226E5007178E2 /* SongBubble.m */; };
+		DFDCB7B119F237D6007178E2 /* Timer.m in Sources */ = {isa = PBXBuildFile; fileRef = DFDCB7B019F237D6007178E2 /* Timer.m */; };
+		DFDCB7B419F238DB007178E2 /* BubbleBeat.m in Sources */ = {isa = PBXBuildFile; fileRef = DFDCB7B319F238DB007178E2 /* BubbleBeat.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +113,10 @@
 		DFDCB7AA19F22527007178E2 /* ComboBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComboBar.m; sourceTree = "<group>"; };
 		DFDCB7AC19F226E5007178E2 /* SongBubble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongBubble.h; sourceTree = "<group>"; };
 		DFDCB7AD19F226E5007178E2 /* SongBubble.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongBubble.m; sourceTree = "<group>"; };
+		DFDCB7AF19F237D6007178E2 /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
+		DFDCB7B019F237D6007178E2 /* Timer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Timer.m; sourceTree = "<group>"; };
+		DFDCB7B219F238DB007178E2 /* BubbleBeat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BubbleBeat.h; sourceTree = "<group>"; };
+		DFDCB7B319F238DB007178E2 /* BubbleBeat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BubbleBeat.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +159,8 @@
 				B7378993180767190076A88C /* MainScene.m */,
 				DFDCB79A19F22211007178E2 /* GamePlay.h */,
 				DFDCB79B19F22211007178E2 /* GamePlay.m */,
+				DFDCB7AF19F237D6007178E2 /* Timer.h */,
+				DFDCB7B019F237D6007178E2 /* Timer.m */,
 				DFDCB79E19F22222007178E2 /* GenreSelect.h */,
 				DFDCB79F19F22222007178E2 /* GenreSelect.m */,
 				DFDCB7A119F22232007178E2 /* PostGamePopUp.h */,
@@ -163,6 +171,8 @@
 				DFDCB7AD19F226E5007178E2 /* SongBubble.m */,
 				DFDCB7A919F22527007178E2 /* ComboBar.h */,
 				DFDCB7AA19F22527007178E2 /* ComboBar.m */,
+				DFDCB7B219F238DB007178E2 /* BubbleBeat.h */,
+				DFDCB7B319F238DB007178E2 /* BubbleBeat.m */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -381,6 +391,8 @@
 				DFDCB7AB19F22527007178E2 /* ComboBar.m in Sources */,
 				B7378994180767190076A88C /* MainScene.m in Sources */,
 				DFDCB7A019F22222007178E2 /* GenreSelect.m in Sources */,
+				DFDCB7B119F237D6007178E2 /* Timer.m in Sources */,
+				DFDCB7B419F238DB007178E2 /* BubbleBeat.m in Sources */,
 				DFDCB7A319F22232007178E2 /* PostGamePopUp.m in Sources */,
 				B73789871807631A0076A88C /* main.m in Sources */,
 				DFDCB7A819F2250E007178E2 /* Bubble.m in Sources */,

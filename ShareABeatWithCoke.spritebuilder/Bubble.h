@@ -7,10 +7,13 @@
 //
 
 #import "CCNode.h"
+#import "BubbleBeat.h"
 
 @interface Bubble : CCNode
 @property (strong, nonatomic) CCLabelTTF* timeLabel;
 @property (assign, nonatomic) double beatTime;
+@property (strong, nonatomic) BubbleBeat* thisBeat;
 
 -(void)loadParticleExplosionWithParticleName: (NSString *) particleName withPosition: (CGPoint) position withColor: (CCColor*) color;
+-(void) burst;
 @end

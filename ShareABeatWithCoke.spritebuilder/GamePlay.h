@@ -7,7 +7,11 @@
 //
 
 #import "CCScene.h"
-
+#import "ComboBar.h"
+#import "PostGamePopUp.h"
+#import "Timer.h"
+#import "BubbleBeat.h"
+#import "Bubble.h"
 @interface GamePlay : CCScene
 
 @end
