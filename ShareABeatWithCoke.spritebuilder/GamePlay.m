@@ -63,7 +63,7 @@
 
 -(void) didLoadFromCCB
 {
-    self.userInteractionEnabled = FALSE;
+    self.userInteractionEnabled = TRUE;
     _bubbleBeatMessage.string = @"";
     _defaults = [NSUserDefaults standardUserDefaults];
     
@@ -113,7 +113,7 @@
                 {
                     _bubbleBeatMessage.string = @"START!";
                     [self performSelector:@selector(startGame) withObject:nil afterDelay:_beatLength];
-                    [_soundDriver performSelector:@selector(playSongFromURL:) withObject:@"spotify:track:6GCW5Muk3u0cM5QTkS4C9a" afterDelay: 2*_beatLength];
+                    //[_soundDriver performSelector:@selector(playSongFromURL:) withObject:@"spotify:track:6GCW5Muk3u0cM5QTkS4C9a" afterDelay: 2*_beatLength];
                     //[self startGame];
                 }
                 else if (_gameCountdown == _defaultCountDown)
@@ -181,9 +181,9 @@
             _bubbleLaunched = FALSE;
             
             _bubbleBeatMessage.string = @"TOO LATE!";
-            Bubble* tempBubble = _bubbleArray[0];
-            [_bubbleArray removeObjectAtIndex:0];
-            [tempBubble burstWithColor: [CCColor redColor]];
+//            Bubble* tempBubble = _bubbleArray[0];
+//            [_bubbleArray removeObjectAtIndex:0];
+//            [tempBubble burstWithColor: [CCColor redColor]];
             [self setPercentage: -6* _currentBubbleBeat.timeStamp];
             [self loadNewBubbleBeat];
             
@@ -214,9 +214,9 @@
 //        CCEffectGlass* glassEffect = [CCEffectGlass effectWithShininess: 1.0f refraction:.1f refractionEnvironment:_backGround.backGroundSprite reflectionEnvironment:_backGround.backGroundSprite];
 //        currentBubble.bubbleSpriteFrame.effect = glassEffect;
         [_bubbleArray addObject: currentBubble];
-        float randomInitialXPosition = self.contentSizeInPoints.width/2 + [self randomFloat:50];
-        float randomFinalYPosition = self.contentSizeInPoints.height/2 + [self randomFloat:50];
-        currentBubble.position = ccp (randomInitialXPosition, -20);
+        float randomInitialXPosition = self.contentSizeInPoints.width/2 + [self randomFloat:100];
+        float randomFinalYPosition = self.contentSizeInPoints.height/2 + [self randomFloat:100];
+        currentBubble.position = ccp (randomInitialXPosition, -30);
         [self addChild: currentBubble];
         CCActionMoveTo* move = [CCActionMoveTo actionWithDuration:1 position:ccp(randomInitialXPosition, randomFinalYPosition)];
         CCActionEaseOut* easeIn = [CCActionEaseOut actionWithAction:move];
@@ -253,17 +253,17 @@
 }
 
 -(void) touchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
-    for (Bubble* e in _bubbleArray)
+    if (_gameStarted && !_gameEnded)
     {
-        if ([self containsExactTouchLocation:[touch locationInNode:self] withObject:e])
+        for (Bubble* e in _bubbleArray)
         {
-            [self popBubble: e];
-            break;
+            if ([self containsExactTouchLocation:[touch locationInNode:self] withObject:e])
+            {
+                [self popBubble: e];
+                break;
+            }
         }
     }
-    _bubbleBeatMessage.string = @"MISS!";
-    [self setPercentage: -6 * _currentBubbleBeat.timeStamp];
-    [self addScore: -25];
 }
 
 -(BOOL) containsExactTouchLocation: (CGPoint)location withObject: (CCNode*) object
@@ -276,7 +276,6 @@
 
 -(void) popBubble: (Bubble*) bubble
 {
-    [_bubbleArray removeObject:bubble];
     if (!_bubbleBeatRecognized && _allowBubbleBeat)
     {
         float convertedTime = bubble.thisBeat.delay;
@@ -290,7 +289,9 @@
             [self setPercentage: -6 * _currentBubbleBeat.timeStamp];
             [self addScore: -25];
             [bubble burstWithColor:[CCColor redColor]];
+            [self loadParticleExplosionWithParticleName: @"BubbleBurst" withPosition:ccp(bubble.position.x,bubble.position.y) withColor:[CCColor redColor]];
         }
+        [_bubbleArray removeObject:bubble];
         _bubbleBeatRecognized = TRUE;
         _allowBubbleBeat = FALSE;
     }
@@ -304,6 +305,7 @@
         [self setPercentage: 6 * _currentBubbleBeat.timeStamp];
         [self addScore: 50];
         [bubble burstWithColor:[CCColor yellowColor]];
+        [self loadParticleExplosionWithParticleName: @"BubbleBurst" withPosition:ccp(bubble.position.x,bubble.position.y) withColor:[CCColor yellowColor]];
     }
     else if (_bubbleBeatTimeStamp < 1.10 * convertedTime && _bubbleBeatTimeStamp > .9 * convertedTime)
     {
@@ -311,6 +313,7 @@
         [self setPercentage: 4 * _currentBubbleBeat.timeStamp];
         [self addScore: 25];
         [bubble burstWithColor:[CCColor whiteColor]];
+        [self loadParticleExplosionWithParticleName: @"BubbleBurst" withPosition:ccp(bubble.position.x,bubble.position.y) withColor:[CCColor whiteColor]];
     }
     else if (_bubbleBeatTimeStamp < 1.20 * convertedTime && _bubbleBeatTimeStamp > .8 * convertedTime)
     {
@@ -318,6 +321,7 @@
         [self setPercentage: 2 * _currentBubbleBeat.timeStamp];
         [self addScore: 10];
         [bubble burstWithColor:[CCColor brownColor]];
+        [self loadParticleExplosionWithParticleName: @"BubbleBurst" withPosition:ccp(bubble.position.x,bubble.position.y) withColor:[CCColor brownColor]];
     }
     else if (_bubbleBeatTimeStamp <= .8 * convertedTime)
     {
@@ -325,6 +329,7 @@
         [self setPercentage: -6 * _currentBubbleBeat.timeStamp];
         [self addScore: -25];
         [bubble burstWithColor:[CCColor redColor]];
+        [self loadParticleExplosionWithParticleName: @"BubbleBurst" withPosition:ccp(bubble.position.x,bubble.position.y) withColor:[CCColor redColor]];
     }
 }
 
@@ -442,7 +447,7 @@
             _delay = 0;
             
         }
-        else if ([[e valueForKey:@"confidence"] doubleValue] >= .6)
+        else if ([[e valueForKey:@"confidence"] doubleValue] >= .7)
         {
             BubbleBeat* thisBeat = [[BubbleBeat alloc] initWithTime:_delay andDelay:_delay andType:@"Beat"];
             BubbleBeat* bubbleSpawnBeat = [[BubbleBeat alloc] initWithTime:_delay andDelay:_delay andType:@"BubbleSpawn"];
@@ -451,7 +456,6 @@
             _delay = 0;
         }
         _delay += [[e valueForKey:@"duration"] doubleValue];
-    
     }
 }
 
@@ -497,4 +501,17 @@
     [[CCDirector sharedDirector] replaceScene: @"TitleScreen"];
 }
 
+-(void)loadParticleExplosionWithParticleName: (NSString *) particleName withPosition: (CGPoint) position withColor: (CCColor*) color
+{
+    
+    @synchronized(self)
+    {
+        CCParticleSystem *explosion = (CCParticleSystem*)[CCBReader load: [NSString stringWithFormat:@"Particles/%@Particle", particleName]];
+        explosion.autoRemoveOnFinish = TRUE;
+        explosion.position = position;
+        explosion.startColor = color;
+        explosion.endColor = color;
+        [self addChild: explosion];
+    }
+}
 @end

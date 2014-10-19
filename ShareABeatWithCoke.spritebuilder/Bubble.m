@@ -13,7 +13,7 @@
 
 -(void) burstWithColor:(CCColor*) color
 {
-    [self loadParticleExplosionWithParticleName: @"BubbleBurst" withPosition:ccp(self.contentSize.width/2,self.contentSize.height/2) withColor:color];
+    [self loadParticleExplosionWithParticleName: @"BubbleBurst" withPosition:ccp(self.contentSizeInPoints.width/2,self.contentSizeInPoints.height/2) withColor:color];
     [self removeFromParent];
 }
 

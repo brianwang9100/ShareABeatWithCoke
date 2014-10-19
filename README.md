@@ -4,9 +4,9 @@ ShareABeatWithCoke
 Rhythm Game featuring Spotify and EchoNest APIs that utilizes analyzing services to create a rhythm beat to any spotify supported song for a user to interactively tap and gain points.
 
 #Authors
-Developer: Brian Wang
+Developer: Brian Wang: Freshman Georgia Tech
 
-Designer: Andrew Huang
+Designer: Andrew Huang: Senior Georgia State
 
 ##What has been completed
 ArtWork

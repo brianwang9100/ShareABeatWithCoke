@@ -28,6 +28,10 @@
     {
         self.comboSize.color = [CCColor whiteColor];
     }
+    if (self.currentSize <=10)
+    {
+        self.currentSize = 10;
+    }
     
 }
 
