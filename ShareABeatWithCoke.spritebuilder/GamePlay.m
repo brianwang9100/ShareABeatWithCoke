@@ -391,7 +391,7 @@
     //float tempo = [_soundDriver retrieveSongDataTempo:analysisURL];
     NSArray* segmentArray = [_soundDriver tempJSONParser];
     float tempo = 133.968f;
-    _beatLength = tempo;
+    _beatLength = 60.000f/tempo;
     _delay = -1;
     for (NSDictionary* e in segmentArray)
     {
@@ -403,7 +403,6 @@
         {
             double bubbleTapTime = .2 * _delay;
             BubbleBeat* thisBeat = [[BubbleBeat alloc] initWithTime:_delay andDelay:_delay andType:@"Beat"];
-            [_queue addObject: thisBeat];
             BubbleBeat* bubbleSpawnBeat = [[BubbleBeat alloc] initWithTime:(_delay - bubbleTapTime) andDelay:_delay andType:@"BubbleSpawn"];
             [_queue addObject: bubbleSpawnBeat];
             [_queue addObject: thisBeat];
