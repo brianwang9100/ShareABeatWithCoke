@@ -541,7 +541,7 @@
 								<string>Text</string>
 								<key>value</key>
 								<array>
-									<string>1</string>
+									<string></string>
 									<false/>
 								</array>
 							</dict>
@@ -1206,7 +1206,8 @@
 								<string>Text</string>
 								<key>value</key>
 								<array>
-									<string></string>
+									<string>
+</string>
 									<false/>
 								</array>
 							</dict>
@@ -1225,7 +1226,7 @@
 								<string>FloatScale</string>
 								<key>value</key>
 								<array>
-									<real>30</real>
+									<real>25</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -1235,7 +1236,7 @@
 								<key>type</key>
 								<string>Check</string>
 								<key>value</key>
-								<false/>
+								<true/>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1244,9 +1245,9 @@
 								<string>Size</string>
 								<key>value</key>
 								<array>
-									<real>0.0</real>
-									<real>0.0</real>
-									<integer>0</integer>
+									<real>1</real>
+									<real>50</real>
+									<integer>2</integer>
 									<integer>0</integer>
 								</array>
 							</dict>

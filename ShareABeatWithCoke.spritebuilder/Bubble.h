@@ -13,7 +13,8 @@
 @property (strong, nonatomic) CCLabelTTF* timeLabel;
 @property (assign, nonatomic) double beatTime;
 @property (strong, nonatomic) BubbleBeat* thisBeat;
+@property (strong, nonatomic) CCSprite* bubbleSpriteFrame;
 
 -(void)loadParticleExplosionWithParticleName: (NSString *) particleName withPosition: (CGPoint) position withColor: (CCColor*) color;
--(void) burst;
+-(void) burstWithColor: (CCColor*) color;
 @end

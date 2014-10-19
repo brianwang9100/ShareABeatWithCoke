@@ -10,7 +10,7 @@
 		<false/>
 	</dict>
 	<key>UUID</key>
-	<integer>13</integer>
+	<integer>11</integer>
 	<key>centeredOrigin</key>
 	<false/>
 	<key>currentResolution</key>
@@ -80,8 +80,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>0.50540000200271606</real>
-									<real>0.50304222106933594</real>
+									<real>0.5</real>
+									<real>0.5</real>
 									<integer>0</integer>
 									<integer>2</integer>
 									<integer>2</integer>
@@ -173,7 +173,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>0.50312501192092896</real>
+							<real>0.5</real>
 							<real>0.5</real>
 							<integer>0</integer>
 							<integer>2</integer>
@@ -218,6 +218,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -252,7 +254,6 @@
 						<key>value</key>
 						<array>
 							<real>0.5</real>
-
 							<real>0.35176056623458862</real>
 							<integer>0</integer>
 							<integer>2</integer>
@@ -579,7 +580,7 @@
 						<key>value</key>
 						<array>
 							<real>0.5</real>
-							<real>0.20000000298023224</real>
+							<real>0.25</real>
 							<integer>0</integer>
 							<integer>2</integer>
 							<integer>2</integer>
@@ -871,12 +872,10 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
-				<integer>12</integer>
+				<integer>10</integer>
 				<key>baseClass</key>
 				<string>CCSprite</string>
 				<key>children</key>
@@ -884,7 +883,7 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>Coke-Open-Happiness</string>
+				<string>spotifyLogo</string>
 				<key>memberVarAssignmentName</key>
 				<string></string>
 				<key>memberVarAssignmentType</key>
@@ -907,9 +906,7 @@
 						<key>value</key>
 						<array>
 							<real>0.5</real>
-
 							<real>0.60000002384185791</real>
-
 							<integer>0</integer>
 							<integer>2</integer>
 							<integer>2</integer>
@@ -947,7 +944,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>Sprites/Coke-Open-Happiness.png</string>
+							<string>Sprites/spotifyLogo.png</string>
 						</array>
 					</dict>
 					<dict>

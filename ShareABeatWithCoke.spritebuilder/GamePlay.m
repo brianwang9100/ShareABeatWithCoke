@@ -18,6 +18,7 @@
     CCLabelTTF *_comboModeLabel;
     CCNode* _comboContainerNode;
     NSUserDefaults *_defaults;
+    BackGround* _backGround;
     
     float _currentNumOfBeats;
     int _waveNumOfBeats;
@@ -38,6 +39,7 @@
     BOOL _gameEnded;
     BOOL _tutorialMode;
     BOOL _comboMode;
+    BOOL _bubbleLaunched;
     
     NSMutableArray *_queue;
     NSMutableArray *_bubbleArray;
@@ -73,8 +75,9 @@
     _gameStarted = FALSE;
     _gameEnded = FALSE;
     _comboMode = FALSE;
+    _bubbleLaunched = FALSE;
     
-    _defaultCountDown = 4;
+    _defaultCountDown = 6;
     
     _totalPoints = 0;
     
@@ -105,13 +108,14 @@
                 {
                     _bubbleBeatMessage.string = @"START!";
                     [self performSelector:@selector(startGame) withObject:nil afterDelay:_beatLength];
+                    [_soundDriver performSelector:@selector(playSongFromURL:) withObject:@"spotify:track:6GCW5Muk3u0cM5QTkS4C9a" afterDelay: 2*_beatLength];
                     //[self startGame];
                 }
                 else if (_gameCountdown == _defaultCountDown)
                 {
-                    _bubbleBeatMessage.string = @"TAP THE BUBBLES TO THE BEAT!";
+                    _bubbleBeatMessage.string = @"TAP BUBBLES TO THE BEAT!";
                 }
-                else if (_gameCountdown < _defaultCountDown && _gameCountdown > 0)
+                else if (_gameCountdown < 4 && _gameCountdown > 0)
                 {
                     _bubbleBeatMessage.string = [NSString stringWithFormat:@"%i", _gameCountdown];
                 }
@@ -152,10 +156,11 @@
         
         _currentBubbleBeat = _queue[0];
         
-        if (_timer.currentTime >= _currentBubbleBeat.timeStamp * _beatLength && [_currentBubbleBeat.typeOfSlapNeeded isEqual:@"Bubble"])
+        if (_timer.currentTime >= _currentBubbleBeat.timeStamp * _beatLength && [_currentBubbleBeat.typeOfSlapNeeded isEqual:@"BubbleSpawn"])
         {
             [self delayAllowanceOfBubbleBeat];
             [self launchBubbleWithBeat:_currentBubbleBeat];
+            [self loadNewBubbleBeat];
         }
         else
         {
@@ -165,11 +170,14 @@
                 _timer.currentTime = .2*_currentBubbleBeat.delay;
                 _bubbleBeatRecognized = FALSE;
                 _allowBubbleBeat = TRUE;
+                _bubbleLaunched = FALSE;
                 
                 _bubbleBeatMessage.string = @"TOO LATE!";
-                [_bubbleArray[0] burst];
+                Bubble* tempBubble = _bubbleArray[0];
                 [_bubbleArray removeObjectAtIndex:0];
+                [tempBubble burstWithColor: [CCColor redColor]];
                 [self setPercentage: -6* _currentBubbleBeat.timeStamp];
+                [self loadNewBubbleBeat];
                 
                 
             }
@@ -180,22 +188,40 @@
                 _currentNumOfBeats +=_currentBubbleBeat.timeStamp;
                 _bubbleBeatRecognized = FALSE;
                 _allowBubbleBeat = TRUE;
+                _bubbleLaunched = FALSE;
+                [self loadNewBubbleBeat];
                 
             }
         }
-        [self loadNewBubbleBeat];
     }
 }
 
 //TODO: FIX LAUNCHING OF BUBBLE
 -(void) launchBubbleWithBeat: (BubbleBeat*) beat
 {
-    Bubble* currentBubble = (Bubble*)[CCBReader load:@"Bubble"];
-    currentBubble.thisBeat = [[BubbleBeat alloc] initWithTime: (1.2 * beat.delay) andDelay: beat.delay andType:@"Beat"];
-    currentBubble.beatTime = .2 * beat.delay;
-    [_bubbleArray addObject: currentBubble];
-    //currentBubble.position = ccp(,0);
-    
+    if (!_bubbleLaunched)
+    {
+        Bubble* currentBubble = (Bubble*)[CCBReader load:@"Bubble"];
+        currentBubble.thisBeat = [[BubbleBeat alloc] initWithTime: (1.2 * beat.delay) andDelay: beat.delay andType:@"Beat"];
+        currentBubble.beatTime = .2 * beat.delay;
+//        CCEffectGlass* glassEffect = [CCEffectGlass effectWithShininess: 1.0f refraction:.1f refractionEnvironment:_backGround.backGroundSprite reflectionEnvironment:_backGround.backGroundSprite];
+//        currentBubble.bubbleSpriteFrame.effect = glassEffect;
+        [_bubbleArray addObject: currentBubble];
+        float randomInitialXPosition = self.contentSizeInPoints.width/2 + [self randomFloat:50];
+        float randomFinalYPosition = self.contentSizeInPoints.height/2 + [self randomFloat:50];
+        currentBubble.position = ccp (randomInitialXPosition, -20);
+        [self addChild: currentBubble];
+        CCActionMoveTo* move = [CCActionMoveTo actionWithDuration:.2 position:ccp(randomInitialXPosition, randomFinalYPosition)];
+        CCActionEaseOut* easeIn = [CCActionEaseOut actionWithAction:move];
+        [currentBubble runAction:easeIn];
+        _bubbleLaunched = TRUE;
+    }
+}
+
+-(float) randomFloat: (int) range
+{
+    float val = (((float)arc4random()/ARC4RANDOM_MAX)* 2 -1)*(range+1);
+    return val;
 }
 
 -(void) loadNextSong
@@ -228,6 +254,9 @@
             break;
         }
     }
+    _bubbleBeatMessage.string = @"MISS!";
+    [self setPercentage: -6 * _currentBubbleBeat.timeStamp];
+    [self addScore: -25];
 }
 
 -(BOOL) containsExactTouchLocation: (CGPoint)location withObject: (CCNode*) object
@@ -240,51 +269,55 @@
 
 -(void) popBubble: (Bubble*) bubble
 {
+    [_bubbleArray removeObject:bubble];
     if (!_bubbleBeatRecognized && _allowBubbleBeat)
     {
         float convertedTime = bubble.thisBeat.delay;
         if (bubble.thisBeat.timeStamp == ((BubbleBeat*) _queue[0]).timeStamp)
         {
-            [self checkForAccuracy:convertedTime];
+            [self checkForAccuracy:convertedTime withBubble:bubble];
         }
         else
         {
             _bubbleBeatMessage.string = @"WRONG BUBBLE";
             [self setPercentage: -6 * _currentBubbleBeat.timeStamp];
             [self addScore: -25];
+            [bubble burstWithColor:[CCColor redColor]];
         }
         _bubbleBeatRecognized = TRUE;
         _allowBubbleBeat = FALSE;
     }
-    [_bubbleArray removeObject:bubble];
-    [bubble burst];
 }
 
--(void) checkForAccuracy: (float) convertedTime
+-(void) checkForAccuracy: (float) convertedTime withBubble: (Bubble*) bubble
 {
     if (_bubbleBeatTimeStamp < 1.05 * convertedTime && _bubbleBeatTimeStamp > .95 * convertedTime)
     {
         _bubbleBeatMessage.string = @"PERFECT!";
         [self setPercentage: 6 * _currentBubbleBeat.timeStamp];
         [self addScore: 50];
+        [bubble burstWithColor:[CCColor yellowColor]];
     }
     else if (_bubbleBeatTimeStamp < 1.10 * convertedTime && _bubbleBeatTimeStamp > .9 * convertedTime)
     {
         _bubbleBeatMessage.string = @"GOOD";
         [self setPercentage: 4 * _currentBubbleBeat.timeStamp];
         [self addScore: 25];
+        [bubble burstWithColor:[CCColor whiteColor]];
     }
     else if (_bubbleBeatTimeStamp < 1.20 * convertedTime && _bubbleBeatTimeStamp > .8 * convertedTime)
     {
         _bubbleBeatMessage.string = @"OK";
         [self setPercentage: 2 * _currentBubbleBeat.timeStamp];
         [self addScore: 10];
+        [bubble burstWithColor:[CCColor brownColor]];
     }
     else if (_bubbleBeatTimeStamp <= .8 * convertedTime)
     {
         _bubbleBeatMessage.string = @"TOO EARLY!";
         [self setPercentage: -6 * _currentBubbleBeat.timeStamp];
         [self addScore: -25];
+        [bubble burstWithColor:[CCColor redColor]];
     }
 }
 
@@ -315,8 +348,7 @@
         _comboBar.comboBarGradient.visible = TRUE;
         _comboBar.comboGlowNode.visible = TRUE;
         _comboModeLabel.visible = TRUE;
-        _totalScoreLabel.color = [CCColor whiteColor];
-        _bubbleBeatMessage.color = [CCColor whiteColor];
+
     }
     else
     {
@@ -326,8 +358,6 @@
         _comboBar.comboBarGradient.visible = FALSE;
         _comboBar.comboGlowNode.visible = FALSE;
         _comboModeLabel.visible = FALSE;
-        _totalScoreLabel.color = [CCColor blackColor];
-        _bubbleBeatMessage.color = [CCColor blackColor];
     }
     
     if (_comboBar.currentSize <= 0)

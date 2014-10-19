@@ -9,5 +9,6 @@
 #import "CCNode.h"
 
 @interface BackGround : CCNode
+@property (strong, nonatomic) CCSpriteFrame* backGroundSprite;
 
 @end

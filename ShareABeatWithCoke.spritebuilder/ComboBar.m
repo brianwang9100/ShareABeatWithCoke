@@ -33,16 +33,12 @@
 
 -(void)loadParticleExplosionWithParticleName: (NSString *) particleName withPosition: (CGPoint) position withColor: (CCColor*) color
 {
-    
-    @synchronized(self)
-    {
         CCParticleSystem *explosion = (CCParticleSystem*)[CCBReader load: [NSString stringWithFormat:@"Particles/%@Particle", particleName]];
         explosion.autoRemoveOnFinish = TRUE;
         explosion.position = position;
         explosion.startColor = color;
         explosion.endColor = color;
         [self.comboSize addChild: explosion];
-    }
 }
 
 @end

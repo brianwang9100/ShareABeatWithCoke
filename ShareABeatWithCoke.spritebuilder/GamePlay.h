@@ -16,6 +16,7 @@
 #import "ENAPIRequest.h"
 #import "SpotifyEchoNestDriver.h"
 #import "MyManager.h"
+#import "BackGround.h"
 @interface GamePlay : CCScene
 
 @end
