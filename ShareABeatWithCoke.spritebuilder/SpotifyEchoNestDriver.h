@@ -13,10 +13,10 @@
 
 
 @interface SpotifyEchoNestDriver : CCNode
-@property (strong, nonatomic) ENAPIRequest *request;
-@property (readonly) NSString *apiKey;
-@property (readonly) NSString *consumerKey;
-@property (readonly) NSString *sharedSecret;
+//@property (strong, nonatomic) ENAPIRequest *request;
+//@property (readonly) NSString *apiKey;
+//@property (readonly) NSString *consumerKey;
+//@property (readonly) NSString *sharedSecret;
 
 @property (strong,nonatomic) NSString* currentAnalysisURL;
 @property (strong,nonatomic) NSDictionary* currentSong;

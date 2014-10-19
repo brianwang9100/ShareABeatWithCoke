@@ -15,6 +15,19 @@ static NSString * const kTokenSwapURL = @"http://localhost:1234/swap";
     NSMutableArray* _playList;
 }
 
+-(void) didLoadFromCCB
+{
+//    self.request;
+//    self.apiKey;
+//    self.consumerKey;
+//    self.sharedSecret;
+    
+    self.currentAnalysisURL = @"";
+    self.currentSong = @"";
+    
+    self.player = [NSDictionary new];
+}
+
 -(void) loadPlayListWithSong: (ENAPIRequest*)request
 {
     _playList = [request.response valueForKey:@"songs"];
@@ -27,7 +40,9 @@ static NSString * const kTokenSwapURL = @"http://localhost:1234/swap";
     if (_playList == nil || _playList.count == 0)
     {
         NSMutableDictionary* params = [NSMutableDictionary new];
+        [params setValue: @"3XDU9UD8ACYFXQQG1" forKey: @"api_key"];
         [params setValue:[NSNumber numberWithInteger:15] forKey:@"results"];
+        [params setValue: @"json" forKey: @"format"];
         [params setValue:@"pop" forKey:@"genre"];
         [params setValue: @"id:spotify" forKey:@"bucket"];
         [params setValue:@"genre-radio" forKey: @"type"];
@@ -37,7 +52,9 @@ static NSString * const kTokenSwapURL = @"http://localhost:1234/swap";
         [ENAPIRequest GETWithEndpoint:@"playlist/static"
                         andParameters:params
                    andCompletionBlock:^(ENAPIRequest *request) {
+                       
                        [self loadPlayListWithSong:request];
+                       
                    }];
     }
     
@@ -52,6 +69,7 @@ static NSString * const kTokenSwapURL = @"http://localhost:1234/swap";
 -(void) requestAnalaysisURL: (NSString*) song
 {
     NSMutableDictionary* params = [NSMutableDictionary new];
+    [params setValue: @"3XDU9UD8ACYFXQQG1" forKey: @"api_key"];
     [params setValue:song forKey:@"id"];
     [params setValue:@"audio_summary" forKey:@"bucket"];
     [ENAPIRequest GETWithEndpoint:@"track/profile"

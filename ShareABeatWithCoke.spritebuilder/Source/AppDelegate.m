@@ -141,7 +141,7 @@ static NSString * const kTokenSwapURL = @"http://localhost:1234/swap";
 
 - (CCScene*) startScene
 {
-    return [CCBReader loadAsScene:@"MainScene"];
+    return [CCBReader loadAsScene:@"GamePlay"];
 }
 
 @end
