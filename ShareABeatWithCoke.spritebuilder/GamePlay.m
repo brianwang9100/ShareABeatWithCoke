@@ -201,7 +201,7 @@
 -(void) loadNextSong
 {
     [_queue removeAllObjects];
-    [_soundDriver loadNextSong];
+    //[_soundDriver loadNextSong];
     [self generateBeatForSong];
     _gameCountdownMode = TRUE;
     _gameStarted = FALSE;
@@ -209,7 +209,8 @@
     _timer.currentTime = 0;
     _bubbleBeatTimeStamp = 0;
     _currentNumOfBeats = 0;
-    [_soundDriver performSelector:@selector(playSongFromURL:) withObject:_soundDriver.currentSongURL afterDelay: (_defaultCountDown + 1)*_beatLength];
+    //[_soundDriver performSelector:@selector(playSongFromURL:) withObject:_soundDriver.currentSongURL afterDelay: (_defaultCountDown + 1)*_beatLength];
+    [_soundDriver performSelector:@selector(playSongFromURL:) withObject:@"spotify:track:6GCW5Muk3u0cM5QTkS4C9a" afterDelay: (_defaultCountDown + 1)*_beatLength];
 }
 
 -(void) delayAllowanceOfBubbleBeat
@@ -379,12 +380,17 @@
 }
 -(void) generateBeatForSong
 {
-    [_soundDriver requestSongFromEchoNestRadio];
-    [_soundDriver requestAnalaysisURL:_soundDriver.currentSongURL];
-    NSString* analysisURL = _soundDriver.currentAnalysisURL;
-    //NSArray* beatArray = [_soundDriver retrieveSongDataBeats:analysisURL];
-    NSArray* segmentArray =[_soundDriver retrieveSongDataSegments:analysisURL];
-    double tempo = [_soundDriver retrieveSongDataTempo:analysisURL];
+//    [_soundDriver requestSongFromEchoNestRadio];
+//    [_soundDriver requestAnalaysisURL:_soundDriver.currentSongURL];
+
+//    [_soundDriver requestAnalaysisURL:@"spotify:track:5brMyscUnQg14hMriS91ks"];
+//    NSString* analysisURL = _soundDriver.currentAnalysisURL;
+//    NSArray* beatArray = [_soundDriver retrieveSongDataBeats:analysisURL];
+//    NSString* analysisURL = @"http://echonest-analysis.s3.amazonaws.com/TR/s7xSewfAg_HVAOQA4zVF2FleECFyfOEFBr__ECbP8F6QPdtAFLLoK7j9s4KH15CSQudTe8ZXLY-bdZjDE%3D/3/full.json?AWSAccessKeyId=AKIAJRDFEY23UEVW42BQ&Expires=1413697481&Signature=d5GTiOvEs4mNE%2BdEpq9q2KcHnYk%3D";
+    //NSArray* segmentArray =[_soundDriver retrieveSongDataSegments:analysisURL];
+    //float tempo = [_soundDriver retrieveSongDataTempo:analysisURL];
+    NSArray* segmentArray = [_soundDriver tempJSONParser];
+    float tempo = 133.968f;
     _beatLength = tempo;
     _delay = -1;
     for (NSDictionary* e in segmentArray)

@@ -7,20 +7,28 @@
 //
 
 #import "SpotifyEchoNestDriver.h"
+
 static NSString * const kClientId = @"aeb4dafe32e0434d8347bc9d4abf09cd";
 static NSString * const kCallbackURL = @"ShareABeatWithCoke://callback";
 static NSString * const kTokenSwapURL = @"http://localhost:1234/swap";
+@interface SpotifyEchoNestDriver ()
+
+@property (strong, nonatomic) ENAPIRequest *request;
+@property (readonly) NSString *apiKey;
+@property (readonly) NSString *consumerKey;
+@property (readonly) NSString *sharedSecret;
+
+@end
 @implementation SpotifyEchoNestDriver
+
 {
     NSMutableArray* _playList;
 }
+@synthesize request = _request;
 
 -(void) didLoadFromCCB
 {
-    self.request;
-//    self.apiKey;
-//    self.consumerKey;
-//    self.sharedSecret;
+
     
     self.currentAnalysisURL = @"";
     self.currentSongURL = @"";
@@ -28,6 +36,7 @@ static NSString * const kTokenSwapURL = @"http://localhost:1234/swap";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didSendUpdateNotification:) name:@"ENTasteProfileLibrary.updateSent" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveUpdateCompleteNotification:) name:@"ENTasteProfileLibrary.updateComplete" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveSimilarQueryCompleteNotification:) name:@"ENTasteProfileLibrary.similarQueryComplete" object:nil];
+
     
 }
 
@@ -46,7 +55,6 @@ static NSString * const kTokenSwapURL = @"http://localhost:1234/swap";
     [ENAPIRequest GETWithEndpoint:@"playlist/static"
                     andParameters:params
                andCompletionBlock:^(ENAPIRequest *request) {
-                   
                    [self extractSpotifySongFromRequest:request];
                }];
 }
@@ -100,13 +108,13 @@ static NSString * const kTokenSwapURL = @"http://localhost:1234/swap";
     return [json valueForKey:@"beats"];
 }
 
--(double) retrieveSongDataTempo: (NSString*) analysisURL
+-(float) retrieveSongDataTempo: (NSString*) analysisURL
 {
     NSURL* url=[NSURL URLWithString: analysisURL];   // pass your URL  Here.
     NSData* data=[NSData dataWithContentsOfURL:url];
     NSError* error;
     NSMutableDictionary* json = [NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error: &error];
-    return (double)[[json valueForKey:@"tracks"] doubleForKey:@"tempo"];
+    return [[json valueForKeyPath:@"tracks.tempo"] floatValue];
 }
 
 
@@ -144,6 +152,16 @@ static NSString * const kTokenSwapURL = @"http://localhost:1234/swap";
         }];
     }];
     
+}
+
+-(NSArray*) tempJSONParser
+{
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"KatyPerrySample" ofType:@"json"];
+    NSError *error = nil;
+    NSData *JSONData = [NSData dataWithContentsOfFile:filePath options:NSDataReadingMappedIfSafe error:&error];
+    NSMutableDictionary* json = [NSJSONSerialization JSONObjectWithData:JSONData options: NSJSONReadingMutableContainers error: &error];
+    return [json valueForKey:@"segments"];
+
 }
 
 @end

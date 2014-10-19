@@ -28,15 +28,54 @@
 #import "AppDelegate.h"
 #import "CCBuilderReader.h"
 #import "MainScene.h"
+#import "SpotifyEchoNestDriver.h"
 static NSString * const kClientId = @"aeb4dafe32e0434d8347bc9d4abf09cd";
 static NSString * const kCallbackURL = @"ShareABeatWithCoke://callback";
 static NSString * const kTokenSwapURL = @"http://localhost:1234/swap";
 @implementation AppController
 {
 }
+- (NSString *)apiKey {
+    return [[[NSUserDefaults standardUserDefaults] stringForKey:@"apiKey"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+}
+
+- (NSString *)consumerKey {
+    return [[[NSUserDefaults standardUserDefaults] stringForKey:@"consumerKey"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+}
+
+- (NSString *)sharedSecret {
+    return [[[NSUserDefaults standardUserDefaults] stringForKey:@"sharedSecret"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+}
+- (void)initializeSettingsToSettingsDefaults {
+    NSLog(@"initializing settings to the settings defaults");
+    
+    NSString *pathStr = [[NSBundle mainBundle] bundlePath];
+    NSString *settingsBundlePath = [pathStr stringByAppendingPathComponent:@"Settings.bundle"];
+    NSString *finalPath = [settingsBundlePath stringByAppendingPathComponent:@"Root.plist"];
+    
+    NSDictionary *settingsDict = [NSDictionary dictionaryWithContentsOfFile:finalPath];
+    NSArray *prefSpecifierArray = [settingsDict objectForKey:@"PreferenceSpecifiers"];
+    
+    NSMutableDictionary *appDefaults = [NSMutableDictionary new];
+    
+    NSDictionary *prefItem;
+    for (prefItem in prefSpecifierArray) {
+        NSString *keyValueStr = [prefItem objectForKey:@"Key"];
+        id defaultValue = [prefItem objectForKey:@"DefaultValue"];
+        
+        if (keyValueStr != nil && defaultValue != nil) {
+            [appDefaults setObject:defaultValue forKey:keyValueStr];
+        }
+    }
+    
+    [[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [self initializeSettingsToSettingsDefaults];
     // Configure Cocos2d with the options set in SpriteBuilder
     NSString* configPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Published-iOS"]; // TODO: add support for Published-Android support
     configPath = [configPath stringByAppendingPathComponent:@"configCocos2d.plist"];
@@ -75,6 +114,16 @@ static NSString * const kTokenSwapURL = @"http://localhost:1234/swap";
 //
     
     return YES;
+}
+
+- (void)applicationWillResignActive:(UIApplication *)application {
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+    NSLog(@"applicationDidBecomeActive");
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [ENAPIRequest setApiKey:self.apiKey  andConsumerKey:self.consumerKey  andSharedSecret:self.sharedSecret];
 }
 
 -(BOOL)application:(UIApplication *)application
@@ -141,7 +190,7 @@ static NSString * const kTokenSwapURL = @"http://localhost:1234/swap";
 
 - (CCScene*) startScene
 {
-    return [CCBReader loadAsScene:@"GamePlay"];
+    return [CCBReader loadAsScene:@"MainScene"];
 }
 
 @end

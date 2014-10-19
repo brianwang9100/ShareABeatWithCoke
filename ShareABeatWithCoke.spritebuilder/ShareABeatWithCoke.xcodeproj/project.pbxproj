@@ -36,6 +36,8 @@
 		B77F1B3E17B978D7009739AE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B77F1B3D17B978D7009739AE /* Foundation.framework */; };
 		B77F1B4017B978D7009739AE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B77F1B3F17B978D7009739AE /* CoreGraphics.framework */; };
 		B77F1B4217B978D7009739AE /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B77F1B4117B978D7009739AE /* CoreText.framework */; };
+		DF245C1719F38F9D00F895E8 /* KatyPerrySample.json in Resources */ = {isa = PBXBuildFile; fileRef = DF245C1519F38F9D00F895E8 /* KatyPerrySample.json */; };
+		DF245C1819F38F9D00F895E8 /* TemplateIcon2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DF245C1619F38F9D00F895E8 /* TemplateIcon2x.png */; };
 		DF4CE9FB19F30AFC006AFDB5 /* MyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DF4CE9FA19F30AFC006AFDB5 /* MyManager.m */; };
 		DF4CEA0019F33761006AFDB5 /* BackGround.m in Sources */ = {isa = PBXBuildFile; fileRef = DF4CE9FF19F33760006AFDB5 /* BackGround.m */; };
 		DF4CEA0E19F37D4D006AFDB5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF4CEA0D19F37D4D006AFDB5 /* Images.xcassets */; };
@@ -67,6 +69,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 5018F24C0DFDEAC400C013A5;
 			remoteInfo = cocos2d;
+		};
+		DF4CEA1419F3807E006AFDB5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DFDCB7CB19F25629007178E2 /* ENAPILibrary.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 7EE1166416A3213000A62D4D;
+			remoteInfo = ENAPILibraryTests;
 		};
 		DFDCB7D019F25629007178E2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -126,6 +135,8 @@
 		B77F1B3F17B978D7009739AE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		B77F1B4117B978D7009739AE /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		B7B3713D180358F1007369CC /* libObjectiveChipmunk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libObjectiveChipmunk.a; path = "../libs/cocos2d-iphone/external/Chipmunk/xcode/build/Debug-iphoneos/libObjectiveChipmunk.a"; sourceTree = "<group>"; };
+		DF245C1519F38F9D00F895E8 /* KatyPerrySample.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = KatyPerrySample.json; sourceTree = "<group>"; };
+		DF245C1619F38F9D00F895E8 /* TemplateIcon2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TemplateIcon2x.png; sourceTree = "<group>"; };
 		DF4CE9F919F30AFC006AFDB5 /* MyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyManager.h; sourceTree = "<group>"; };
 		DF4CE9FA19F30AFC006AFDB5 /* MyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyManager.m; sourceTree = "<group>"; };
 		DF4CE9FE19F33760006AFDB5 /* BackGround.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackGround.h; sourceTree = "<group>"; };
@@ -218,6 +229,8 @@
 				DFDCB7AA19F22527007178E2 /* ComboBar.m */,
 				DFDCB7B219F238DB007178E2 /* BubbleBeat.h */,
 				DFDCB7B319F238DB007178E2 /* BubbleBeat.m */,
+				DF245C1519F38F9D00F895E8 /* KatyPerrySample.json */,
+				DF245C1619F38F9D00F895E8 /* TemplateIcon2x.png */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -336,6 +349,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				DF4CEA1519F3807E006AFDB5 /* PBXTargetDependency */,
 				DFDCB7D519F256CC007178E2 /* PBXTargetDependency */,
 				B7378989180764180076A88C /* PBXTargetDependency */,
 			);
@@ -369,6 +383,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				English,
 			);
 			mainGroup = B77F1B2517B978D7009739AE;
 			productRefGroup = B77F1B2F17B978D7009739AE /* Products */;
@@ -425,6 +440,7 @@
 				B71F5914188484E7003F4D28 /* iPad@2x.png in Resources */,
 				B71F5913188484E7003F4D28 /* iPad.png in Resources */,
 				B71F5912188484E7003F4D28 /* iPad-old@2x.png in Resources */,
+				DF245C1719F38F9D00F895E8 /* KatyPerrySample.json in Resources */,
 				B71F5916188484E7003F4D28 /* iPhone-old@2x.png in Resources */,
 				B737893B180761570076A88C /* Published-iOS in Resources */,
 				B71F591A188484E7003F4D28 /* Settings@2x.png in Resources */,
@@ -432,6 +448,7 @@
 				B71F5915188484E7003F4D28 /* iPhone-old.png in Resources */,
 				B71F5917188484E7003F4D28 /* iPhone.png in Resources */,
 				B7378975180762440076A88C /* Default-568h@2x.png in Resources */,
+				DF245C1819F38F9D00F895E8 /* TemplateIcon2x.png in Resources */,
 				B71F5918188484E7003F4D28 /* iPhone@2x.png in Resources */,
 				B7378977180762440076A88C /* Default.png in Resources */,
 				B71F5911188484E7003F4D28 /* iPad-old.png in Resources */,
@@ -486,6 +503,11 @@
 			isa = PBXTargetDependency;
 			name = cocos2d;
 			targetProxy = B7378988180764180076A88C /* PBXContainerItemProxy */;
+		};
+		DF4CEA1519F3807E006AFDB5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ENAPILibraryTests;
+			targetProxy = DF4CEA1419F3807E006AFDB5 /* PBXContainerItemProxy */;
 		};
 		DFDCB7D519F256CC007178E2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -582,11 +604,25 @@
 					"Source/libs/cocos2d-iphone/external/Chipmunk/include",
 					"\"Source/libs/cocos2d-iphone/cocos2d-ui\"/**",
 					"\"Source/libs/cocos2d-iphone/external/ObjectAL\"/**",
-					"\"Source/libs/ENAPILibrary/ENAPILibrary\"/**",
-					"\"${SRCROOT}\"/..",
 				);
 				INFOPLIST_FILE = Source/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Source/libs/cocos2d-iphone/build/Debug",
+					"$(PROJECT_DIR)/Source/libs/cocos2d-iphone/build/Release",
+					"$(PROJECT_DIR)/Source/libs/cocos2d-iphone/external/Chipmunk/msvc/glew/lib/Release/Win32",
+					"$(PROJECT_DIR)/Source/libs/cocos2d-iphone/external/Chipmunk/msvc/glfw/lib-msvc100",
+					"$(PROJECT_DIR)/Source/libs/cocos2d-iphone/external/Chipmunk/xcode/build/Chipmunk7.build/Release-iphoneos/ChipmunkStatic-iPhone.build/Objects-normal/armv7",
+					"$(PROJECT_DIR)/Source/libs/cocos2d-iphone/external/Chipmunk/xcode/build/Chipmunk7.build/Release-iphoneos/ChipmunkStatic-iPhone.build/Objects-normal/armv7s",
+					"$(PROJECT_DIR)/Source/libs/cocos2d-iphone/external/Chipmunk/xcode/build/Chipmunk7.build/Release-iphoneos/ObjectiveChipmunk.build/Objects-normal/armv7",
+					"$(PROJECT_DIR)/Source/libs/cocos2d-iphone/external/Chipmunk/xcode/build/Chipmunk7.build/Release-iphoneos/ObjectiveChipmunk.build/Objects-normal/armv7s",
+					"$(PROJECT_DIR)/Source/libs/cocos2d-iphone/external/Chipmunk/xcode/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/Source/libs/cocos2d-iphone/external/Chipmunk/xcode/build/Release",
+					"$(PROJECT_DIR)/Source/libs/cocos2d-iphone/external/Chipmunk/xcode/build/Release-iphoneos",
+					"$(PROJECT_DIR)/Source/libs/cocos2d-iphone/external/Chipmunk/xcode/libGLEW/lib",
+					"$(PROJECT_DIR)/Source/libs/cocos2d-iphone/external/Chipmunk/xcode/libglfw/lib",
+				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-lz",
@@ -595,6 +631,7 @@
 				);
 				PRODUCT_NAME = ShareABeatWithCoke;
 				PROVISIONING_PROFILE = "eacce3a3-b17b-4ab8-be49-6ba00da36173";
+				USER_HEADER_SEARCH_PATHS = "\"Source/libs/ENAPILibrary/ENAPILibrary\" \"${SRCROOT}\"/..";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -622,11 +659,25 @@
 					"Source/libs/cocos2d-iphone/external/Chipmunk/include",
 					"\"Source/libs/cocos2d-iphone/cocos2d-ui\"/**",
 					"\"Source/libs/cocos2d-iphone/external/ObjectAL\"/**",
-					"\"Source/libs/ENAPILibrary/ENAPILibrary\"/**",
-					"\"${SRCROOT}\"/..",
 				);
 				INFOPLIST_FILE = Source/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Source/libs/cocos2d-iphone/build/Debug",
+					"$(PROJECT_DIR)/Source/libs/cocos2d-iphone/build/Release",
+					"$(PROJECT_DIR)/Source/libs/cocos2d-iphone/external/Chipmunk/msvc/glew/lib/Release/Win32",
+					"$(PROJECT_DIR)/Source/libs/cocos2d-iphone/external/Chipmunk/msvc/glfw/lib-msvc100",
+					"$(PROJECT_DIR)/Source/libs/cocos2d-iphone/external/Chipmunk/xcode/build/Chipmunk7.build/Release-iphoneos/ChipmunkStatic-iPhone.build/Objects-normal/armv7",
+					"$(PROJECT_DIR)/Source/libs/cocos2d-iphone/external/Chipmunk/xcode/build/Chipmunk7.build/Release-iphoneos/ChipmunkStatic-iPhone.build/Objects-normal/armv7s",
+					"$(PROJECT_DIR)/Source/libs/cocos2d-iphone/external/Chipmunk/xcode/build/Chipmunk7.build/Release-iphoneos/ObjectiveChipmunk.build/Objects-normal/armv7",
+					"$(PROJECT_DIR)/Source/libs/cocos2d-iphone/external/Chipmunk/xcode/build/Chipmunk7.build/Release-iphoneos/ObjectiveChipmunk.build/Objects-normal/armv7s",
+					"$(PROJECT_DIR)/Source/libs/cocos2d-iphone/external/Chipmunk/xcode/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/Source/libs/cocos2d-iphone/external/Chipmunk/xcode/build/Release",
+					"$(PROJECT_DIR)/Source/libs/cocos2d-iphone/external/Chipmunk/xcode/build/Release-iphoneos",
+					"$(PROJECT_DIR)/Source/libs/cocos2d-iphone/external/Chipmunk/xcode/libGLEW/lib",
+					"$(PROJECT_DIR)/Source/libs/cocos2d-iphone/external/Chipmunk/xcode/libglfw/lib",
+				);
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-lsqlite3",
@@ -634,6 +685,7 @@
 				);
 				PRODUCT_NAME = ShareABeatWithCoke;
 				PROVISIONING_PROFILE = "eacce3a3-b17b-4ab8-be49-6ba00da36173";
+				USER_HEADER_SEARCH_PATHS = "\"Source/libs/ENAPILibrary/ENAPILibrary\" \"${SRCROOT}\"/..";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
