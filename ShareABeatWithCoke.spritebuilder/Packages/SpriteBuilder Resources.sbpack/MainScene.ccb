@@ -10,7 +10,7 @@
 		<false/>
 	</dict>
 	<key>UUID</key>
-	<integer>11</integer>
+	<integer>13</integer>
 	<key>centeredOrigin</key>
 	<false/>
 	<key>currentResolution</key>
@@ -80,8 +80,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>0.5</real>
-									<real>0.5</real>
+									<real>0.50540000200271606</real>
+									<real>0.50304222106933594</real>
 									<integer>0</integer>
 									<integer>2</integer>
 									<integer>2</integer>
@@ -252,7 +252,7 @@
 						<key>value</key>
 						<array>
 							<real>0.5</real>
-							<real>0.34999999403953552</real>
+							<real>0.2800000011920929</real>
 							<integer>0</integer>
 							<integer>2</integer>
 							<integer>2</integer>
@@ -578,7 +578,7 @@
 						<key>value</key>
 						<array>
 							<real>0.5</real>
-							<real>0.25</real>
+							<real>0.20000000298023224</real>
 							<integer>0</integer>
 							<integer>2</integer>
 							<integer>2</integer>
@@ -873,7 +873,7 @@
 			</dict>
 			<dict>
 				<key>UUID</key>
-				<integer>10</integer>
+				<integer>12</integer>
 				<key>baseClass</key>
 				<string>CCSprite</string>
 				<key>children</key>
@@ -881,7 +881,7 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>spotifyLogo</string>
+				<string>Coke-Open-Happiness</string>
 				<key>memberVarAssignmentName</key>
 				<string></string>
 				<key>memberVarAssignmentType</key>
@@ -903,11 +903,11 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>160</real>
-							<real>370.29998779296875</real>
+							<real>0.5</real>
+							<real>0.64999997615814209</real>
 							<integer>0</integer>
-							<integer>0</integer>
-							<integer>0</integer>
+							<integer>2</integer>
+							<integer>2</integer>
 						</array>
 					</dict>
 					<dict>
@@ -942,7 +942,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>Sprites/spotifyLogo.png</string>
+							<string>Sprites/Coke-Open-Happiness.png</string>
 						</array>
 					</dict>
 					<dict>
