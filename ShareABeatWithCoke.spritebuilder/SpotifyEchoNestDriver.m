@@ -17,53 +17,39 @@ static NSString * const kTokenSwapURL = @"http://localhost:1234/swap";
 
 -(void) didLoadFromCCB
 {
-//    self.request;
+    self.request;
 //    self.apiKey;
 //    self.consumerKey;
 //    self.sharedSecret;
     
     self.currentAnalysisURL = @"";
-    self.currentSong = @"";
+    self.currentSongURL = @"";
     
-    self.player = [NSDictionary new];
-}
-
--(void) loadPlayListWithSong: (ENAPIRequest*)request
-{
-    _playList = [request.response valueForKey:@"songs"];
-    _currentSong = _playList[0];
 }
 
 -(void) requestSongFromEchoNestRadio
 {
     
-    if (_playList == nil || _playList.count == 0)
-    {
-        NSMutableDictionary* params = [NSMutableDictionary new];
-        [params setValue: @"3XDU9UD8ACYFXQQG1" forKey: @"api_key"];
-        [params setValue:[NSNumber numberWithInteger:15] forKey:@"results"];
-        [params setValue: @"json" forKey: @"format"];
-        [params setValue:@"pop" forKey:@"genre"];
-        [params setValue: @"id:spotify" forKey:@"bucket"];
-        [params setValue:@"genre-radio" forKey: @"type"];
-        [params setValue:@"tracks" forKey: @"bucket"];
-        [params setValue: @"true" forKey:@"limit"];
+    NSMutableDictionary* params = [NSMutableDictionary new];
+//        [params setValue: @"3XDU9UD8ACYFXQQG1" forKey: @"api_key"];
+    [params setValue:[NSNumber numberWithInteger:15] forKey:@"results"];
+    [params setValue: @"json" forKey: @"format"];
+    [params setValue:@"pop" forKey:@"genre"];
+    [params setValue: [NSArray arrayWithObjects:@"id:spotify",@"tracks", nil] forKey:@"bucket"];
+    [params setValue:@"genre-radio" forKey: @"type"];
+    [params setValue: @"true" forKey:@"limit"];
 
-        [ENAPIRequest GETWithEndpoint:@"playlist/static"
-                        andParameters:params
-                   andCompletionBlock:^(ENAPIRequest *request) {
-                       
-                       [self loadPlayListWithSong:request];
-                       
-                   }];
-    }
-    
+    [ENAPIRequest GETWithEndpoint:@"playlist/static"
+                    andParameters:params
+               andCompletionBlock:^(ENAPIRequest *request) {
+                   
+                   [self extractSpotifySongFromRequest:request];
+               }];
 }
 
--(NSString*) extractSpotifySongFromRequest
+-(void) extractSpotifySongFromRequest: (ENAPIRequest*) request
 {
-    NSString* songURL = [[_currentSong valueForKey: @"tracks"][0] valueForKey:@"foreign_id"];
-    return songURL;
+    self.currentSongURL = [[[[request.response valueForKeyPath:@"response.songs.tracks"] objectAtIndex:0] objectAtIndex:0] valueForKey:@"foreign_id"];
 }
 
 -(void) requestAnalaysisURL: (NSString*) song

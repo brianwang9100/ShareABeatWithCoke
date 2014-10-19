@@ -13,13 +13,13 @@
 
 
 @interface SpotifyEchoNestDriver : CCNode
-//@property (strong, nonatomic) ENAPIRequest *request;
+@property (strong, nonatomic) ENAPIRequest *request;
 //@property (readonly) NSString *apiKey;
 //@property (readonly) NSString *consumerKey;
 //@property (readonly) NSString *sharedSecret;
 
 @property (strong,nonatomic) NSString* currentAnalysisURL;
-@property (strong,nonatomic) NSDictionary* currentSong;
+@property (strong,nonatomic) NSString* currentSongURL;
 
 @property (nonatomic, strong) SPTAudioStreamingController *player;
 
@@ -30,7 +30,6 @@
 -(void) loadNextSong;
 -(void) extractAnalysisURL: (ENAPIRequest*) request;
 -(void) requestAnalaysisURL: (NSString*) song;
--(NSString*) extractSpotifySongFromRequest;
 -(void) requestSongFromEchoNestRadio;
 -(void) loadPlayListWithSong: (ENAPIRequest*)request;
 -(double) retrieveSongDataTempo: (NSString*) analysisURL;

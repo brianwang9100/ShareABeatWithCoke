@@ -209,7 +209,7 @@
     _timer.currentTime = 0;
     _bubbleBeatTimeStamp = 0;
     _currentNumOfBeats = 0;
-    [_soundDriver performSelector:@selector(playSongFromURL:) withObject:[_soundDriver extractSpotifySongFromRequest] afterDelay: (_defaultCountDown + 1)*_beatLength];
+    [_soundDriver performSelector:@selector(playSongFromURL:) withObject:_soundDriver.currentSongURL afterDelay: (_defaultCountDown + 1)*_beatLength];
 }
 
 -(void) delayAllowanceOfBubbleBeat
@@ -380,7 +380,7 @@
 -(void) generateBeatForSong
 {
     [_soundDriver requestSongFromEchoNestRadio];
-    [_soundDriver requestAnalaysisURL:[_soundDriver extractSpotifySongFromRequest]];
+    [_soundDriver requestAnalaysisURL:_soundDriver.currentSongURL];
     NSString* analysisURL = _soundDriver.currentAnalysisURL;
     //NSArray* beatArray = [_soundDriver retrieveSongDataBeats:analysisURL];
     NSArray* segmentArray =[_soundDriver retrieveSongDataSegments:analysisURL];
