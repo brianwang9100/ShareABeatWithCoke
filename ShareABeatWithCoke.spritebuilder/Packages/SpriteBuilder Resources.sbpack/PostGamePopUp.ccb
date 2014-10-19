@@ -10,7 +10,7 @@
 		<false/>
 	</dict>
 	<key>UUID</key>
-	<integer>37</integer>
+	<integer>38</integer>
 	<key>centeredOrigin</key>
 	<false/>
 	<key>currentResolution</key>
@@ -130,7 +130,7 @@
 			</dict>
 			<dict>
 				<key>UUID</key>
-				<integer>35</integer>
+				<integer>36</integer>
 				<key>baseClass</key>
 				<string>CCButton</string>
 				<key>children</key>
@@ -160,8 +160,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>0.50499999523162842</real>
-							<real>0.45500001311302185</real>
+							<real>0.5</real>
+							<real>0.34999999403953552</real>
 							<integer>0</integer>
 							<integer>2</integer>
 							<integer>2</integer>
@@ -198,8 +198,8 @@
 						<string>Block</string>
 						<key>value</key>
 						<array>
-							<string></string>
-							<integer>1</integer>
+							<string>quit</string>
+							<integer>2</integer>
 						</array>
 					</dict>
 					<dict>
@@ -243,7 +243,7 @@
 						<string>String</string>
 						<key>value</key>
 						<array>
-							<string>Play Again?</string>
+							<string>Quit</string>
 							<false/>
 						</array>
 					</dict>
@@ -458,7 +458,7 @@
 			</dict>
 			<dict>
 				<key>UUID</key>
-				<integer>36</integer>
+				<integer>35</integer>
 				<key>baseClass</key>
 				<string>CCButton</string>
 				<key>children</key>
@@ -488,8 +488,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>0.5</real>
-							<real>0.34999999403953552</real>
+							<real>0.50499999523162842</real>
+							<real>0.45500001311302185</real>
 							<integer>0</integer>
 							<integer>2</integer>
 							<integer>2</integer>
@@ -526,8 +526,8 @@
 						<string>Block</string>
 						<key>value</key>
 						<array>
-							<string></string>
-							<integer>1</integer>
+							<string>restart</string>
+							<integer>2</integer>
 						</array>
 					</dict>
 					<dict>
@@ -571,7 +571,7 @@
 						<string>String</string>
 						<key>value</key>
 						<array>
-							<string>Quit</string>
+							<string>Play Again?</string>
 							<false/>
 						</array>
 					</dict>
