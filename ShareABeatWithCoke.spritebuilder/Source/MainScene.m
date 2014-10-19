@@ -19,6 +19,7 @@ static NSString * const kTokenSwapURL = @"http://localhost:1234/swap";
 -(void) didLoadFromCCB
 {
     
+    //lol
 }
 
 -(void) loadUserAuthentication
