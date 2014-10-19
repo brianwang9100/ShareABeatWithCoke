@@ -1,8 +1,31 @@
 ShareABeatWithCoke
 ==================
 
-Rhythm Game utilizing Spotify, a fun game to explore songs and get rewarded for it.
+Rhythm Game featuring Spotify and EchoNest APIs that utilizes analyzing services to create a rhythm beat to any spotify supported song for a user to interactively tap and gain points.
 
-#UWOTM8
+#Authors
+Developer: Brian Wang
 
-##shit
+Designer: Andrew Huang
+
+##What has been completed
+ArtWork
+
+Icon
+
+Splash Screen
+
+Spotify Ruby Server Authentication and Manager Singleton
+
+##What needs work
+Rhythm Algorithm
+
+Echonest Debugging
+
+##What doesn't work at all
+Collection Blocks
+
+EchoNest Calls
+
+Spotify Audio
+
