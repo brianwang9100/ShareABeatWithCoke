@@ -39,8 +39,10 @@ static NSString * const kTokenSwapURL = @"http://localhost:1234/swap";
 
 -(void) play
 {
-    MyManager* manager = [MyManager sharedManager];
-    [self playUsingSession:manager.session];
+//    MyManager* manager = [MyManager sharedManager];
+//    [self playUsingSession:manager.session];
+//    
+    [[CCDirector sharedDirector] replaceScene:[CCBReader loadAsScene:@"MainScene"]];
 }
 
 -(void)playUsingSession:(SPTSession *)session {

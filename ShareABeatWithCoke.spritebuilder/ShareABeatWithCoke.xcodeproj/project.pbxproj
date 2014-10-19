@@ -37,6 +37,7 @@
 		B77F1B4017B978D7009739AE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B77F1B3F17B978D7009739AE /* CoreGraphics.framework */; };
 		B77F1B4217B978D7009739AE /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B77F1B4117B978D7009739AE /* CoreText.framework */; };
 		DF4CE9FB19F30AFC006AFDB5 /* MyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DF4CE9FA19F30AFC006AFDB5 /* MyManager.m */; };
+		DF4CEA0019F33761006AFDB5 /* BackGround.m in Sources */ = {isa = PBXBuildFile; fileRef = DF4CE9FF19F33760006AFDB5 /* BackGround.m */; };
 		DFDCB79519F1F665007178E2 /* Spotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFDCB79419F1F665007178E2 /* Spotify.framework */; };
 		DFDCB79C19F22211007178E2 /* GamePlay.m in Sources */ = {isa = PBXBuildFile; fileRef = DFDCB79B19F22211007178E2 /* GamePlay.m */; };
 		DFDCB7A019F22222007178E2 /* GenreSelect.m in Sources */ = {isa = PBXBuildFile; fileRef = DFDCB79F19F22222007178E2 /* GenreSelect.m */; };
@@ -126,6 +127,8 @@
 		B7B3713D180358F1007369CC /* libObjectiveChipmunk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libObjectiveChipmunk.a; path = "../libs/cocos2d-iphone/external/Chipmunk/xcode/build/Debug-iphoneos/libObjectiveChipmunk.a"; sourceTree = "<group>"; };
 		DF4CE9F919F30AFC006AFDB5 /* MyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyManager.h; sourceTree = "<group>"; };
 		DF4CE9FA19F30AFC006AFDB5 /* MyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyManager.m; sourceTree = "<group>"; };
+		DF4CE9FE19F33760006AFDB5 /* BackGround.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackGround.h; sourceTree = "<group>"; };
+		DF4CE9FF19F33760006AFDB5 /* BackGround.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackGround.m; sourceTree = "<group>"; };
 		DFDCB79419F1F665007178E2 /* Spotify.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Spotify.framework; path = "../../../Downloads/ios-sdk-beta-5/Spotify.framework"; sourceTree = "<group>"; };
 		DFDCB79619F217F0007178E2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DFDCB79A19F22211007178E2 /* GamePlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GamePlay.h; sourceTree = "<group>"; };
@@ -197,6 +200,8 @@
 				DF4CE9FA19F30AFC006AFDB5 /* MyManager.m */,
 				DFDCB79A19F22211007178E2 /* GamePlay.h */,
 				DFDCB79B19F22211007178E2 /* GamePlay.m */,
+				DF4CE9FE19F33760006AFDB5 /* BackGround.h */,
+				DF4CE9FF19F33760006AFDB5 /* BackGround.m */,
 				DFDCB7AF19F237D6007178E2 /* Timer.h */,
 				DFDCB7B019F237D6007178E2 /* Timer.m */,
 				DFDCB79E19F22222007178E2 /* GenreSelect.h */,
@@ -458,6 +463,7 @@
 				DFDCB7AB19F22527007178E2 /* ComboBar.m in Sources */,
 				B7378994180767190076A88C /* MainScene.m in Sources */,
 				DFDCB7A019F22222007178E2 /* GenreSelect.m in Sources */,
+				DF4CEA0019F33761006AFDB5 /* BackGround.m in Sources */,
 				DFDCB7B119F237D6007178E2 /* Timer.m in Sources */,
 				DFDCB7B419F238DB007178E2 /* BubbleBeat.m in Sources */,
 				DFDCB7A319F22232007178E2 /* PostGamePopUp.m in Sources */,

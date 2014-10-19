@@ -109,40 +109,39 @@ static NSString * const kTokenSwapURL = @"http://localhost:1234/swap";
     manager.session = session;
 }
 
--(void)playUsingSession:(SPTSession *)session {
-    
-    // Create a new player if needed
-    if (self.player == nil) {
-        self.player = [SPTAudioStreamingController new];
-    }
-    
-    [self.player loginWithSession:session callback:^(NSError *error) {
-        
-        if (error != nil) {
-            NSLog(@"*** Enabling playback got error: %@", error);
-            return;
-        }
-        
-        [SPTRequest requestItemAtURI:[NSURL URLWithString:@"spotify:album:4L1HDyfdGIkACuygktO7T7"]
-                         withSession:nil
-                            callback:^(NSError *error, SPTAlbum *album) {
-                                
-                                if (error != nil) {
-                                    NSLog(@"*** Album lookup got error %@", error);
-                                    return;
-                                }
-                                [self.player playTrackProvider:album callback:nil];
-                                
-                            }];
-    }];
-    
-}
+//-(void)playUsingSession:(SPTSession *)session {
+//    
+//    // Create a new player if needed
+//    if (self.player == nil) {
+//        self.player = [SPTAudioStreamingController new];
+//    }
+//    
+//    [self.player loginWithSession:session callback:^(NSError *error) {
+//        
+//        if (error != nil) {
+//            NSLog(@"*** Enabling playback got error: %@", error);
+//            return;
+//        }
+//        
+//        [SPTRequest requestItemAtURI:[NSURL URLWithString:@"spotify:album:4L1HDyfdGIkACuygktO7T7"]
+//                         withSession:nil
+//                            callback:^(NSError *error, SPTAlbum *album) {
+//                                
+//                                if (error != nil) {
+//                                    NSLog(@"*** Album lookup got error %@", error);
+//                                    return;
+//                                }
+//                                [self.player playTrackProvider:album callback:nil];
+//                                
+//                            }];
+//    }];
+//    
+//}
 
 
 - (CCScene*) startScene
 {
-    MainScene* mainScene = (MainScene*)[CCBReader loadAsScene:@"MainScene"];
-    return (CCScene*)mainScene;
+    return [CCBReader loadAsScene:@"MainScene"];
 }
 
 @end

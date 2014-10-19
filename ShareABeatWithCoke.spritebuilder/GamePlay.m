@@ -13,10 +13,10 @@
 {
     Timer *_timer;
     ComboBar *_comboBar;
-    CCNodeGradient *_glowNodeGradientNode;
     CCNodeColor *_glowNode;
     CCLabelTTF *_bubbleBeatMessage;
     CCLabelTTF *_comboModeLabel;
+    CCNode* _comboContainerNode;
     NSUserDefaults *_defaults;
     
     float _currentNumOfBeats;
@@ -62,8 +62,8 @@
     _bubbleBeatMessage.string = @"";
     _defaults = [NSUserDefaults standardUserDefaults];
     
-    _queue = [NSArray arrayWithObjects: nil];
-    _bubbleArray = [NSArray arrayWithObjects: nil];
+    _queue = [NSMutableArray arrayWithObjects: nil];
+    _bubbleArray = [NSMutableArray arrayWithObjects: nil];
     
     _timer = [Timer alloc];
     
@@ -190,7 +190,7 @@
 //TODO: FIX LAUNCHING OF BUBBLE
 -(void) launchBubbleWithBeat: (BubbleBeat*) beat
 {
-    Bubble* currentBubble = [CCBReader load:@"Bubble"];
+    Bubble* currentBubble = (Bubble*)[CCBReader load:@"Bubble"];
     currentBubble.thisBeat = [[BubbleBeat alloc] initWithTime: (1.2 * beat.delay) andDelay: beat.delay andType:@"Beat"];
     currentBubble.beatTime = .2 * beat.delay;
     [_bubbleArray addObject: currentBubble];
@@ -302,7 +302,7 @@
         }
         else
         {
-            [_comboBar loadParticleExplosionWithParticleName:@"ComboBar" withPosition:ccp(-1, .5) withColor:[CCColor cyanColor]];
+            [_comboBar loadParticleExplosionWithParticleName:@"ComboBar" withPosition:ccp(-1, .5) withColor:[CCColor whiteColor]];
         }
     }
     
@@ -310,7 +310,6 @@
     {
         _comboBar.currentSize = 100;
         _comboMode = TRUE;
-        _glowNodeGradientNode.visible = TRUE;
         _glowNode.visible = TRUE;
         _comboBar.comboBarGradient.visible = TRUE;
         _comboBar.comboGlowNode.visible = TRUE;
@@ -322,7 +321,6 @@
     {
         _comboMode = FALSE;
         _pointMultiplier = 1;
-        _glowNodeGradientNode.visible = FALSE;
         _glowNode.visible = FALSE;
         _comboBar.comboBarGradient.visible = FALSE;
         _comboBar.comboGlowNode.visible = FALSE;
@@ -425,6 +423,16 @@
 {
     NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
     [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
+}
+
+-(void) skip
+{
+    [self loadNextSong];
+}
+
+-(void) pause
+{
+    
 }
 
 @end

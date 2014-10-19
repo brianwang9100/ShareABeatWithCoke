@@ -224,6 +224,7 @@
 		7EE1164B16A3212F00A62D4D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastTestingUpgradeCheck = 0600;
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = "The Echo Nest Corporation";
 			};
