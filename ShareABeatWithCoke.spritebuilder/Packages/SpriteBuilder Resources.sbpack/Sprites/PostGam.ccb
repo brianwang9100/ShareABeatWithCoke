@@ -1348,7 +1348,7 @@
 						<key>value</key>
 						<array>
 							<real>0.69999998807907104</real>
-							<real>-0.20000000298023224</real>
+							<real>-0.10000000149011612</real>
 							<integer>0</integer>
 							<integer>2</integer>
 							<integer>2</integer>
@@ -1601,6 +1601,8 @@
 						<string>ccbResources/bubble1.png</string>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>
