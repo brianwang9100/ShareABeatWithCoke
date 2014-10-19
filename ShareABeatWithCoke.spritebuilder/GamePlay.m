@@ -13,10 +13,10 @@
 {
     Timer *_timer;
     ComboBar *_comboBar;
-    CCNodeGradient *_glowNodeGradientNode;
     CCNodeColor *_glowNode;
     CCLabelTTF *_bubbleBeatMessage;
     CCLabelTTF *_comboModeLabel;
+    CCNode* _comboContainerNode;
     NSUserDefaults *_defaults;
     
     float _currentNumOfBeats;
@@ -24,6 +24,9 @@
     
     int _pointMultiplier;
     int _totalScore;
+    
+    float _delay;
+    int _defaultCountDown;
     
     CCLabelTTF *_totalScoreLabel;
     CCLabelTTF *_tutorialLabel;
@@ -49,6 +52,8 @@
     float _beatLength;
     BOOL _percentageAlreadySubtracted;
     
+    SpotifyEchoNestDriver *_soundDriver;
+    
 }
 
 -(void) didLoadFromCCB
@@ -57,16 +62,19 @@
     _bubbleBeatMessage.string = @"";
     _defaults = [NSUserDefaults standardUserDefaults];
     
-    _queue = [NSArray arrayWithObjects: nil];
-    _bubbleArray = [NSArray arrayWithObjects: nil];
+    _queue = [NSMutableArray arrayWithObjects: nil];
+    _bubbleArray = [NSMutableArray arrayWithObjects: nil];
     
     _timer = [Timer alloc];
     
     _gameCountdownMode = TRUE;
-    _gameCountdown = 4;
+    _defaultCountDown = 4;
+    _gameCountdown = _defaultCountDown;
     _gameStarted = FALSE;
     _gameEnded = FALSE;
     _comboMode = FALSE;
+    
+    _defaultCountDown = 4;
     
     _totalPoints = 0;
     
@@ -74,7 +82,12 @@
     _bubbleBeatRecognized = FALSE;
     _beatLength = 1;
     _percentageAlreadySubtracted = FALSE;
+    
+    _soundDriver = [SpotifyEchoNestDriver alloc];
+    
+    [self generateBeatForSong];
 }
+
 
 -(void) update:(CCTime)delta
 {
@@ -94,11 +107,11 @@
                     [self performSelector:@selector(startGame) withObject:nil afterDelay:_beatLength];
                     //[self startGame];
                 }
-                else if (_gameCountdown == 4)
+                else if (_gameCountdown == _defaultCountDown)
                 {
                     _bubbleBeatMessage.string = @"TAP THE BUBBLES TO THE BEAT!";
                 }
-                else if (_gameCountdown < 4 && _gameCountdown > 0)
+                else if (_gameCountdown < _defaultCountDown && _gameCountdown > 0)
                 {
                     _bubbleBeatMessage.string = [NSString stringWithFormat:@"%i", _gameCountdown];
                 }
@@ -132,37 +145,35 @@
 //            
 //            _gameStarted = FALSE;
 //            _gameCountdownMode = TRUE;
-//            _gameCountdown = 4;
+//            _gameCountdown = _defaultCountDown;
 //            _timer.currentTime = 0;
 //            _bubbleBeatTimeStamp = 0;
 //        }
         
         _currentBubbleBeat = _queue[0];
         
-        if (_timer.currentTime >= _currentBubbleBeat.timeStamp * _beatLength && [_currentBubbleBeat.typeOfSlapNeeded isEqual:@"PAUSE"])
+        if (_timer.currentTime >= _currentBubbleBeat.timeStamp * _beatLength && [_currentBubbleBeat.typeOfSlapNeeded isEqual:@"Bubble"])
         {
-            
-            [self performSelector:@selector(delayAllowanceOfBubbleBeat) withObject:nil afterDelay: .2 * _beatLength];
-            _currentNumOfBeats+=_currentBubbleBeat.timeStamp;
-            _timer.currentTime = 0;
-            _bubbleBeatTimeStamp = 0;
+            [self delayAllowanceOfBubbleBeat];
+            [self launchBubbleWithBeat:_currentBubbleBeat];
         }
         else
         {
-            if (!_bubbleBeatRecognized && _timer.currentTime >= (_currentBubbleBeat.timeStamp + .2) * _beatLength)
+            if (!_bubbleBeatRecognized && _timer.currentTime >= (_currentBubbleBeat.timeStamp*1.2))
             {
-                _bubbleBeatTimeStamp = .2*_beatLength;
-                _timer.currentTime = .2*_beatLength;
-                _currentNumOfBeats +=_currentBubbleBeat.timeStamp;
+                _bubbleBeatTimeStamp = .2*_currentBubbleBeat.delay;
+                _timer.currentTime = .2*_currentBubbleBeat.delay;
                 _bubbleBeatRecognized = FALSE;
                 _allowBubbleBeat = TRUE;
                 
                 _bubbleBeatMessage.string = @"TOO LATE!";
+                [_bubbleArray[0] burst];
+                [_bubbleArray removeObjectAtIndex:0];
                 [self setPercentage: -6* _currentBubbleBeat.timeStamp];
                 
                 
             }
-            else if (_bubbleBeatRecognized && _timer.currentTime >= _currentBubbleBeat.timeStamp * _beatLength)
+            else if (_bubbleBeatRecognized && _timer.currentTime >= _currentBubbleBeat.timeStamp)
             {
                 _bubbleBeatTimeStamp = 0;
                 _timer.currentTime = 0;
@@ -176,29 +187,29 @@
     }
 }
 
+//TODO: FIX LAUNCHING OF BUBBLE
 -(void) launchBubbleWithBeat: (BubbleBeat*) beat
 {
-    Bubble* currentBubble = [CCBReader load:@"Bubble"];
+    Bubble* currentBubble = (Bubble*)[CCBReader load:@"Bubble"];
+    currentBubble.thisBeat = [[BubbleBeat alloc] initWithTime: (1.2 * beat.delay) andDelay: beat.delay andType:@"Beat"];
+    currentBubble.beatTime = .2 * beat.delay;
+    [_bubbleArray addObject: currentBubble];
     //currentBubble.position = ccp(,0);
-    currentBubble.thisBeat = beat;
     
 }
 
--(void) loadSong
+-(void) loadNextSong
 {
-    
-}
-
--(void) delayWaveMessage
-{
-    if (_tutorialMode)
-    {
-        _bubbleBeatMessage.string = @"TUTORIAL COMPLETE";
-    }
-    else
-    {
-        _bubbleBeatMessage.string = @"WAVE COMPLETE";
-    }
+    [_queue removeAllObjects];
+    [_soundDriver loadNextSong];
+    [self generateBeatForSong];
+    _gameCountdownMode = TRUE;
+    _gameStarted = FALSE;
+    _gameCountdown = _defaultCountDown;
+    _timer.currentTime = 0;
+    _bubbleBeatTimeStamp = 0;
+    _currentNumOfBeats = 0;
+    [_soundDriver performSelector:@selector(playSongFromURL:) withObject:_soundDriver.currentSongURL afterDelay: (_defaultCountDown + 1)*_beatLength];
 }
 
 -(void) delayAllowanceOfBubbleBeat
@@ -230,8 +241,8 @@
 {
     if (!_bubbleBeatRecognized && _allowBubbleBeat)
     {
-        float convertedTime = _currentBubbleBeat.timeStamp * _beatLength;
-        if (bubble.thisBeat == _queue[0])
+        float convertedTime = bubble.thisBeat.delay;
+        if (bubble.thisBeat.timeStamp == ((BubbleBeat*) _queue[0]).timeStamp)
         {
             [self checkForAccuracy:convertedTime];
         }
@@ -244,6 +255,7 @@
         _bubbleBeatRecognized = TRUE;
         _allowBubbleBeat = FALSE;
     }
+    [_bubbleArray removeObject:bubble];
     [bubble burst];
 }
 
@@ -290,7 +302,7 @@
         }
         else
         {
-            [_comboBar loadParticleExplosionWithParticleName:@"ComboBar" withPosition:ccp(-1, .5) withColor:[CCColor cyanColor]];
+            [_comboBar loadParticleExplosionWithParticleName:@"ComboBar" withPosition:ccp(-1, .5) withColor:[CCColor whiteColor]];
         }
     }
     
@@ -298,7 +310,6 @@
     {
         _comboBar.currentSize = 100;
         _comboMode = TRUE;
-        _glowNodeGradientNode.visible = TRUE;
         _glowNode.visible = TRUE;
         _comboBar.comboBarGradient.visible = TRUE;
         _comboBar.comboGlowNode.visible = TRUE;
@@ -310,7 +321,6 @@
     {
         _comboMode = FALSE;
         _pointMultiplier = 1;
-        _glowNodeGradientNode.visible = FALSE;
         _glowNode.visible = FALSE;
         _comboBar.comboBarGradient.visible = FALSE;
         _comboBar.comboGlowNode.visible = FALSE;
@@ -369,7 +379,33 @@
 }
 -(void) generateBeatForSong
 {
+    [_soundDriver requestSongFromEchoNestRadio];
+    [_soundDriver requestAnalaysisURL:_soundDriver.currentSongURL];
+    NSString* analysisURL = _soundDriver.currentAnalysisURL;
+    //NSArray* beatArray = [_soundDriver retrieveSongDataBeats:analysisURL];
+    NSArray* segmentArray =[_soundDriver retrieveSongDataSegments:analysisURL];
+    double tempo = [_soundDriver retrieveSongDataTempo:analysisURL];
+    _beatLength = tempo;
+    _delay = -1;
+    for (NSDictionary* e in segmentArray)
+    {
+        if (_delay == -1)
+        {
+            _delay++;
+        }
+        else if ([[e valueForKey:@"confidence"] doubleValue] >= .6)
+        {
+            double bubbleTapTime = .2 * _delay;
+            BubbleBeat* thisBeat = [[BubbleBeat alloc] initWithTime:_delay andDelay:_delay andType:@"Beat"];
+            [_queue addObject: thisBeat];
+            BubbleBeat* bubbleSpawnBeat = [[BubbleBeat alloc] initWithTime:(_delay - bubbleTapTime) andDelay:_delay andType:@"BubbleSpawn"];
+            [_queue addObject: bubbleSpawnBeat];
+            [_queue addObject: thisBeat];
+            _delay = 0;
+        }
+        _delay += [[e valueForKey:@"duration"] doubleValue];
     
+    }
 }
 
 -(void) loadNewBubbleBeat
@@ -387,6 +423,16 @@
 {
     NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
     [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
+}
+
+-(void) skip
+{
+    [self loadNextSong];
+}
+
+-(void) pause
+{
+    
 }
 
 @end

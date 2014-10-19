@@ -11,5 +11,6 @@
 @interface BubbleBeat : CCNode
 @property (strong, nonatomic) NSString *typeOfSlapNeeded;
 @property (assign, nonatomic) float timeStamp;
--(id) initWithTime: (float) givenTimeStamp andType: (NSString*) type;
+@property (assign, nonatomic) float delay;
+-(id) initWithTime: (float) givenTimeStamp andDelay: (float) givenDelayStamp andType: (NSString*) type;
 @end

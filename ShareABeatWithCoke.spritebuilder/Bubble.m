@@ -31,4 +31,17 @@
     }
 }
 
+-(void) update:(CCTime)delta
+{
+    if (self.beatTime > 0)
+    {
+        self.beatTime -= delta;
+        self.timeLabel.string = [NSString stringWithFormat:@"%f", self.beatTime];
+    }
+    else if (self.beatTime <=0)
+    {
+        self.beatTime = 0;
+        self.timeLabel.string = @"0";
+    }
+}
 @end

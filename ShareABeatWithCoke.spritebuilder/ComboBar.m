@@ -26,7 +26,7 @@
     }
     else
     {
-        self.comboSize.color = [CCColor cyanColor];
+        self.comboSize.color = [CCColor whiteColor];
     }
     
 }

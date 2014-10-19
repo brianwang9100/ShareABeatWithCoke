@@ -18,6 +18,7 @@ static NSString * const kTokenSwapURL = @"http://localhost:1234/swap";
 
 -(void) didLoadFromCCB
 {
+    
 }
 
 -(void) loadUserAuthentication
@@ -39,7 +40,10 @@ static NSString * const kTokenSwapURL = @"http://localhost:1234/swap";
 
 -(void) play
 {
-//    [self playUsingSession: [[UIApplication sharedApplication] delegate].session];
+//    MyManager* manager = [MyManager sharedManager];
+//    [self playUsingSession:manager.session];
+//    
+    [[CCDirector sharedDirector] replaceScene:[CCBReader loadAsScene:@"GamePlay"]];
 }
 
 -(void)playUsingSession:(SPTSession *)session {

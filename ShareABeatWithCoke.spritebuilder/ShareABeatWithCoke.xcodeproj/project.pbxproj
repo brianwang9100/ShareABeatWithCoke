@@ -36,6 +36,9 @@
 		B77F1B3E17B978D7009739AE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B77F1B3D17B978D7009739AE /* Foundation.framework */; };
 		B77F1B4017B978D7009739AE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B77F1B3F17B978D7009739AE /* CoreGraphics.framework */; };
 		B77F1B4217B978D7009739AE /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B77F1B4117B978D7009739AE /* CoreText.framework */; };
+		DF4CE9FB19F30AFC006AFDB5 /* MyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DF4CE9FA19F30AFC006AFDB5 /* MyManager.m */; };
+		DF4CEA0019F33761006AFDB5 /* BackGround.m in Sources */ = {isa = PBXBuildFile; fileRef = DF4CE9FF19F33760006AFDB5 /* BackGround.m */; };
+		DF4CEA0E19F37D4D006AFDB5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF4CEA0D19F37D4D006AFDB5 /* Images.xcassets */; };
 		DFDCB79519F1F665007178E2 /* Spotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFDCB79419F1F665007178E2 /* Spotify.framework */; };
 		DFDCB79C19F22211007178E2 /* GamePlay.m in Sources */ = {isa = PBXBuildFile; fileRef = DFDCB79B19F22211007178E2 /* GamePlay.m */; };
 		DFDCB7A019F22222007178E2 /* GenreSelect.m in Sources */ = {isa = PBXBuildFile; fileRef = DFDCB79F19F22222007178E2 /* GenreSelect.m */; };
@@ -47,6 +50,7 @@
 		DFDCB7B419F238DB007178E2 /* BubbleBeat.m in Sources */ = {isa = PBXBuildFile; fileRef = DFDCB7B319F238DB007178E2 /* BubbleBeat.m */; };
 		DFDCB7D619F256D6007178E2 /* libENAPILibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DFDCB7D119F25629007178E2 /* libENAPILibrary.a */; settings = {ATTRIBUTES = (Required, ); }; };
 		DFDCB7D819F25703007178E2 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFDCB7D719F25703007178E2 /* MediaPlayer.framework */; };
+		DFDCB81C19F2D553007178E2 /* SpotifyEchoNestDriver.m in Sources */ = {isa = PBXBuildFile; fileRef = DFDCB81B19F2D553007178E2 /* SpotifyEchoNestDriver.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,6 +126,11 @@
 		B77F1B3F17B978D7009739AE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		B77F1B4117B978D7009739AE /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		B7B3713D180358F1007369CC /* libObjectiveChipmunk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libObjectiveChipmunk.a; path = "../libs/cocos2d-iphone/external/Chipmunk/xcode/build/Debug-iphoneos/libObjectiveChipmunk.a"; sourceTree = "<group>"; };
+		DF4CE9F919F30AFC006AFDB5 /* MyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyManager.h; sourceTree = "<group>"; };
+		DF4CE9FA19F30AFC006AFDB5 /* MyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyManager.m; sourceTree = "<group>"; };
+		DF4CE9FE19F33760006AFDB5 /* BackGround.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackGround.h; sourceTree = "<group>"; };
+		DF4CE9FF19F33760006AFDB5 /* BackGround.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackGround.m; sourceTree = "<group>"; };
+		DF4CEA0D19F37D4D006AFDB5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ShareABeatWithCoke/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		DFDCB79419F1F665007178E2 /* Spotify.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Spotify.framework; path = "../../../Downloads/ios-sdk-beta-5/Spotify.framework"; sourceTree = "<group>"; };
 		DFDCB79619F217F0007178E2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DFDCB79A19F22211007178E2 /* GamePlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GamePlay.h; sourceTree = "<group>"; };
@@ -142,6 +151,8 @@
 		DFDCB7B319F238DB007178E2 /* BubbleBeat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BubbleBeat.m; sourceTree = "<group>"; };
 		DFDCB7CB19F25629007178E2 /* ENAPILibrary.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ENAPILibrary.xcodeproj; path = Source/libs/ENAPILibrary/ENAPILibrary.xcodeproj; sourceTree = "<group>"; };
 		DFDCB7D719F25703007178E2 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		DFDCB81A19F2D553007178E2 /* SpotifyEchoNestDriver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpotifyEchoNestDriver.h; sourceTree = "<group>"; };
+		DFDCB81B19F2D553007178E2 /* SpotifyEchoNestDriver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotifyEchoNestDriver.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,8 +196,14 @@
 				B737893E1807617C0076A88C /* AppDelegate.m */,
 				B7378992180767190076A88C /* MainScene.h */,
 				B7378993180767190076A88C /* MainScene.m */,
+				DFDCB81A19F2D553007178E2 /* SpotifyEchoNestDriver.h */,
+				DFDCB81B19F2D553007178E2 /* SpotifyEchoNestDriver.m */,
+				DF4CE9F919F30AFC006AFDB5 /* MyManager.h */,
+				DF4CE9FA19F30AFC006AFDB5 /* MyManager.m */,
 				DFDCB79A19F22211007178E2 /* GamePlay.h */,
 				DFDCB79B19F22211007178E2 /* GamePlay.m */,
+				DF4CE9FE19F33760006AFDB5 /* BackGround.h */,
+				DF4CE9FF19F33760006AFDB5 /* BackGround.m */,
 				DFDCB7AF19F237D6007178E2 /* Timer.h */,
 				DFDCB7B019F237D6007178E2 /* Timer.m */,
 				DFDCB79E19F22222007178E2 /* GenreSelect.h */,
@@ -277,6 +294,7 @@
 		B77F1B4617B978D7009739AE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DF4CEA0D19F37D4D006AFDB5 /* Images.xcassets */,
 				DFDCB79619F217F0007178E2 /* Info.plist */,
 				B73789911807667A0076A88C /* Icons */,
 				B737893A180761570076A88C /* Published-iOS */,
@@ -336,7 +354,7 @@
 				ORGANIZATIONNAME = Apportable;
 				TargetAttributes = {
 					B77F1B2D17B978D7009739AE = {
-						DevelopmentTeam = SBVP8ED765;
+						DevelopmentTeam = ALVVSFF263;
 						SystemCapabilities = {
 							com.apple.GameCenter = {
 								enabled = 0;
@@ -402,6 +420,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B71F5919188484E7003F4D28 /* Settings.png in Resources */,
+				DF4CEA0E19F37D4D006AFDB5 /* Images.xcassets in Resources */,
 				B7378978180762440076A88C /* Default@2x.png in Resources */,
 				B71F5914188484E7003F4D28 /* iPad@2x.png in Resources */,
 				B71F5913188484E7003F4D28 /* iPad.png in Resources */,
@@ -448,10 +467,13 @@
 				DFDCB7AB19F22527007178E2 /* ComboBar.m in Sources */,
 				B7378994180767190076A88C /* MainScene.m in Sources */,
 				DFDCB7A019F22222007178E2 /* GenreSelect.m in Sources */,
+				DF4CEA0019F33761006AFDB5 /* BackGround.m in Sources */,
 				DFDCB7B119F237D6007178E2 /* Timer.m in Sources */,
 				DFDCB7B419F238DB007178E2 /* BubbleBeat.m in Sources */,
 				DFDCB7A319F22232007178E2 /* PostGamePopUp.m in Sources */,
 				B73789871807631A0076A88C /* main.m in Sources */,
+				DFDCB81C19F2D553007178E2 /* SpotifyEchoNestDriver.m in Sources */,
+				DF4CE9FB19F30AFC006AFDB5 /* MyManager.m in Sources */,
 				DFDCB7A819F2250E007178E2 /* Bubble.m in Sources */,
 				DFDCB7AE19F226E5007178E2 /* SongBubble.m in Sources */,
 			);
@@ -540,8 +562,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -579,8 +603,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (

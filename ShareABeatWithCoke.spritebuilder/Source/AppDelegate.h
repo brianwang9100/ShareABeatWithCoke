@@ -25,6 +25,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ENAPI.h"
+#import "MyManager.h"
 #import "cocos2d.h"
 
 @interface AppController : CCAppDelegate

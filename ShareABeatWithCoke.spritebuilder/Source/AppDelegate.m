@@ -33,13 +33,10 @@ static NSString * const kCallbackURL = @"ShareABeatWithCoke://callback";
 static NSString * const kTokenSwapURL = @"http://localhost:1234/swap";
 @implementation AppController
 {
-    UIApplication* _thisApplication;
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    _thisApplication = application;
-    
     // Configure Cocos2d with the options set in SpriteBuilder
     NSString* configPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Published-iOS"]; // TODO: add support for Published-Android support
     configPath = [configPath stringByAppendingPathComponent:@"configCocos2d.plist"];
@@ -85,9 +82,9 @@ static NSString * const kTokenSwapURL = @"http://localhost:1234/swap";
  sourceApplication:(NSString *)sourceApplication
         annotation:(id)annotation {
     
-    // Ask SPTAuth if the URL given is a Spotify authentication callback
-    if ([[SPTAuth defaultInstance] canHandleURL:url withDeclaredRedirectURL:[NSURL URLWithString:kCallbackURL]]) {
-        
+    //Ask SPTAuth if the URL given is a Spotify authentication callback
+//    if ([[SPTAuth defaultInstance] canHandleURL:url withDeclaredRedirectURL:[NSURL URLWithString:kCallbackURL]]) {
+//    
         // Call the token swap service to get a logged in session
         [[SPTAuth defaultInstance]
          handleAuthCallbackWithTriggeredAuthURL:url
@@ -98,11 +95,18 @@ static NSString * const kTokenSwapURL = @"http://localhost:1234/swap";
                  NSLog(@"*** Auth error: %@", error);
                  return;
              }
+             
+             [self setupSession:session];
          }];
-        return YES;
-    }
-    
+//        return YES;
+//    }
+
     return NO;
+}
+-(void) setupSession: (SPTSession*) session
+{
+    MyManager* manager = [MyManager sharedManager];
+    manager.session = session;
 }
 
 //-(void)playUsingSession:(SPTSession *)session {
@@ -137,8 +141,7 @@ static NSString * const kTokenSwapURL = @"http://localhost:1234/swap";
 
 - (CCScene*) startScene
 {
-    MainScene* mainScene = (MainScene*)[CCBReader loadAsScene:@"MainScene"];
-    return (CCScene*)mainScene;
+    return [CCBReader loadAsScene:@"GamePlay"];
 }
 
 @end

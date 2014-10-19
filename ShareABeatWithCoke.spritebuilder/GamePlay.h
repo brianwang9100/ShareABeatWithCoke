@@ -14,6 +14,8 @@
 #import "Bubble.h"
 #import "ENAPI.h"
 #import "ENAPIRequest.h"
+#import "SpotifyEchoNestDriver.h"
+#import "MyManager.h"
 @interface GamePlay : CCScene
 
 @end

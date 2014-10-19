@@ -10,7 +10,7 @@
 		<false/>
 	</dict>
 	<key>UUID</key>
-	<integer>9</integer>
+	<integer>12</integer>
 	<key>centeredOrigin</key>
 	<false/>
 	<key>currentResolution</key>
@@ -383,8 +383,8 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>0.12831780314445496</real>
-											<real>0.96936076879501343</real>
+											<real>0.13764895498752594</real>
+											<real>0.93781888484954834</real>
 											<integer>0</integer>
 											<integer>2</integer>
 											<integer>2</integer>
@@ -607,8 +607,8 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>0.36300000548362732</real>
-											<real>0.89601820707321167</real>
+											<real>0.36264774203300476</real>
+											<real>0.9289589524269104</real>
 											<integer>0</integer>
 											<integer>2</integer>
 											<integer>2</integer>
@@ -832,7 +832,7 @@
 										<key>value</key>
 										<array>
 											<real>0.63169306516647339</real>
-											<real>0.9106866717338562</real>
+											<real>0.90142196416854858</real>
 											<integer>0</integer>
 											<integer>2</integer>
 											<integer>2</integer>
@@ -1056,7 +1056,7 @@
 										<key>value</key>
 										<array>
 											<real>0.87036263942718506</real>
-											<real>0.96447139978408813</real>
+											<real>0.90495979785919189</real>
 											<integer>0</integer>
 											<integer>2</integer>
 											<integer>2</integer>
@@ -1191,7 +1191,215 @@
 										<string>Particles/FizzParticle.ccb</string>
 									</dict>
 								</array>
-								<key>selected</key>
+							</dict>
+							<dict>
+								<key>UUID</key>
+								<integer>9</integer>
+								<key>animatedProperties</key>
+								<dict>
+									<key>0</key>
+									<dict/>
+								</dict>
+								<key>baseClass</key>
+								<string>CCNode</string>
+								<key>children</key>
+								<array>
+									<dict>
+										<key>UUID</key>
+										<integer>10</integer>
+										<key>baseClass</key>
+										<string>CCBFile</string>
+										<key>children</key>
+										<array/>
+										<key>customClass</key>
+										<string></string>
+										<key>displayName</key>
+										<string>CCBFile</string>
+										<key>memberVarAssignmentName</key>
+										<string></string>
+										<key>memberVarAssignmentType</key>
+										<integer>1</integer>
+										<key>properties</key>
+										<array>
+											<dict>
+												<key>name</key>
+												<string>name</string>
+												<key>type</key>
+												<string>StringSimple</string>
+												<key>value</key>
+												<string></string>
+											</dict>
+											<dict>
+												<key>name</key>
+												<string>position</string>
+												<key>type</key>
+												<string>Position</string>
+												<key>value</key>
+												<array>
+													<real>-50</real>
+													<real>0.0</real>
+													<integer>0</integer>
+													<integer>0</integer>
+													<integer>0</integer>
+												</array>
+											</dict>
+											<dict>
+												<key>name</key>
+												<string>scale</string>
+												<key>type</key>
+												<string>ScaleLock</string>
+												<key>value</key>
+												<array>
+													<real>1</real>
+													<real>1</real>
+													<false/>
+													<integer>0</integer>
+												</array>
+											</dict>
+											<dict>
+												<key>name</key>
+												<string>ccbFile</string>
+												<key>type</key>
+												<string>CCBFile</string>
+												<key>value</key>
+												<string>Particles/RandomFizzParticle.ccb</string>
+											</dict>
+										</array>
+									</dict>
+									<dict>
+										<key>UUID</key>
+										<integer>11</integer>
+										<key>baseClass</key>
+										<string>CCBFile</string>
+										<key>children</key>
+										<array/>
+										<key>customClass</key>
+										<string></string>
+										<key>displayName</key>
+										<string>CCBFile</string>
+										<key>memberVarAssignmentName</key>
+										<string></string>
+										<key>memberVarAssignmentType</key>
+										<integer>1</integer>
+										<key>properties</key>
+										<array>
+											<dict>
+												<key>name</key>
+												<string>name</string>
+												<key>type</key>
+												<string>StringSimple</string>
+												<key>value</key>
+												<string></string>
+											</dict>
+											<dict>
+												<key>name</key>
+												<string>position</string>
+												<key>type</key>
+												<string>Position</string>
+												<key>value</key>
+												<array>
+													<real>50</real>
+													<real>0.0</real>
+													<integer>0</integer>
+													<integer>0</integer>
+													<integer>0</integer>
+												</array>
+											</dict>
+											<dict>
+												<key>name</key>
+												<string>scale</string>
+												<key>type</key>
+												<string>ScaleLock</string>
+												<key>value</key>
+												<array>
+													<real>1</real>
+													<real>1</real>
+													<false/>
+													<integer>0</integer>
+												</array>
+											</dict>
+											<dict>
+												<key>name</key>
+												<string>ccbFile</string>
+												<key>type</key>
+												<string>CCBFile</string>
+												<key>value</key>
+												<string>Particles/RandomFizzParticle.ccb</string>
+											</dict>
+										</array>
+									</dict>
+								</array>
+								<key>customClass</key>
+								<string></string>
+								<key>displayName</key>
+								<string>CCNode</string>
+								<key>memberVarAssignmentName</key>
+								<string></string>
+								<key>memberVarAssignmentType</key>
+								<integer>1</integer>
+								<key>properties</key>
+								<array>
+									<dict>
+										<key>name</key>
+										<string>name</string>
+										<key>type</key>
+										<string>StringSimple</string>
+										<key>value</key>
+										<string></string>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>position</string>
+										<key>type</key>
+										<string>Position</string>
+										<key>value</key>
+										<array>
+											<real>0.5</real>
+											<real>0.10000000149011612</real>
+											<integer>0</integer>
+											<integer>2</integer>
+											<integer>2</integer>
+										</array>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>contentSize</string>
+										<key>type</key>
+										<string>Size</string>
+										<key>value</key>
+										<array>
+											<real>0.0</real>
+											<real>0.0</real>
+											<integer>0</integer>
+											<integer>0</integer>
+										</array>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>anchorPoint</string>
+										<key>type</key>
+										<string>Point</string>
+										<key>value</key>
+										<array>
+											<real>0.0</real>
+											<real>0.0</real>
+										</array>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>scale</string>
+										<key>type</key>
+										<string>ScaleLock</string>
+										<key>value</key>
+										<array>
+											<real>1</real>
+											<real>1</real>
+											<false/>
+											<integer>0</integer>
+										</array>
+									</dict>
+								</array>
+								<key>seqExpanded</key>
 								<true/>
 							</dict>
 						</array>
@@ -1278,9 +1486,9 @@
 								<string>Color3</string>
 								<key>value</key>
 								<array>
-									<real>0.0</real>
-									<real>0.0</real>
-									<real>0.0</real>
+									<real>0.016423875465989113</real>
+									<real>0.016423875465989113</real>
+									<real>0.016423875465989113</real>
 									<real>1</real>
 								</array>
 							</dict>
@@ -1416,7 +1624,7 @@
 			</dict>
 		</array>
 		<key>customClass</key>
-		<string></string>
+		<string>BackGround</string>
 		<key>displayName</key>
 		<string>CCNode</string>
 		<key>memberVarAssignmentName</key>
@@ -1485,6 +1693,8 @@
 				</array>
 			</dict>
 		</array>
+		<key>selected</key>
+		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>
@@ -1540,7 +1750,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>5</real>
+			<real>1.4666666984558105</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
