@@ -22,6 +22,8 @@ Rhythm Algorithm
 
 Echonest Debugging
 
+JSON request unboxing
+
 ##What doesn't work at all
 Collection Blocks
 
