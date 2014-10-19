@@ -37,6 +37,7 @@
 		B77F1B4017B978D7009739AE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B77F1B3F17B978D7009739AE /* CoreGraphics.framework */; };
 		B77F1B4217B978D7009739AE /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B77F1B4117B978D7009739AE /* CoreText.framework */; };
 		DF1BB12519F3B51100F1006D /* Spotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF1BB12419F3B51100F1006D /* Spotify.framework */; };
+		DF1BB12C19F3E68F00F1006D /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = DF1BB12B19F3E68F00F1006D /* README.md */; };
 		DF245C1719F38F9D00F895E8 /* KatyPerrySample.json in Resources */ = {isa = PBXBuildFile; fileRef = DF245C1519F38F9D00F895E8 /* KatyPerrySample.json */; };
 		DF245C1819F38F9D00F895E8 /* TemplateIcon2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DF245C1619F38F9D00F895E8 /* TemplateIcon2x.png */; };
 		DF4CE9FB19F30AFC006AFDB5 /* MyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DF4CE9FA19F30AFC006AFDB5 /* MyManager.m */; };
@@ -137,6 +138,7 @@
 		B77F1B4117B978D7009739AE /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		B7B3713D180358F1007369CC /* libObjectiveChipmunk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libObjectiveChipmunk.a; path = "../libs/cocos2d-iphone/external/Chipmunk/xcode/build/Debug-iphoneos/libObjectiveChipmunk.a"; sourceTree = "<group>"; };
 		DF1BB12419F3B51100F1006D /* Spotify.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Spotify.framework; sourceTree = "<group>"; };
+		DF1BB12B19F3E68F00F1006D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		DF245C1519F38F9D00F895E8 /* KatyPerrySample.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = KatyPerrySample.json; sourceTree = "<group>"; };
 		DF245C1619F38F9D00F895E8 /* TemplateIcon2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TemplateIcon2x.png; sourceTree = "<group>"; };
 		DF4CE9F919F30AFC006AFDB5 /* MyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyManager.h; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 		B737893C1807616C0076A88C /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				DF1BB12B19F3E68F00F1006D /* README.md */,
 				B737893D1807617C0076A88C /* AppDelegate.h */,
 				B737893E1807617C0076A88C /* AppDelegate.m */,
 				B7378992180767190076A88C /* MainScene.h */,
@@ -495,6 +498,7 @@
 				B73789871807631A0076A88C /* main.m in Sources */,
 				DFDCB81C19F2D553007178E2 /* SpotifyEchoNestDriver.m in Sources */,
 				DF4CE9FB19F30AFC006AFDB5 /* MyManager.m in Sources */,
+				DF1BB12C19F3E68F00F1006D /* README.md in Sources */,
 				DFDCB7A819F2250E007178E2 /* Bubble.m in Sources */,
 				DFDCB7AE19F226E5007178E2 /* SongBubble.m in Sources */,
 			);
