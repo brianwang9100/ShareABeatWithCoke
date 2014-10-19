@@ -27,6 +27,7 @@
     int _totalScore;
     
     float _delay;
+    float _bubbleDelay;
     int _defaultCountDown;
     
     CCLabelTTF *_totalScoreLabel;
@@ -42,11 +43,13 @@
     BOOL _bubbleLaunched;
     
     NSMutableArray *_queue;
+    NSMutableArray *_bubbleQueue;
     NSMutableArray *_bubbleArray;
     
     int _comboBarSize;
     
     BubbleBeat*_currentBubbleBeat;
+    BubbleBeat* _currentBubbleSpawnBeat;
     int _totalPoints;
     float _bubbleBeatTimeStamp;
     BOOL _bubbleBeatRecognized;
@@ -65,6 +68,7 @@
     _defaults = [NSUserDefaults standardUserDefaults];
     
     _queue = [NSMutableArray arrayWithObjects: nil];
+    _bubbleQueue = [NSMutableArray arrayWithObjects: nil];
     _bubbleArray = [NSMutableArray arrayWithObjects: nil];
     
     _timer = [Timer alloc];
@@ -97,6 +101,7 @@
     _timer.currentTime += delta;
     _bubbleBeatTimeStamp += delta;
     _timer.comboTimeKeeper += delta;
+    _timer.bubbleSpawnTime += delta;
     
     if (!_gameStarted)
     {
@@ -153,45 +158,47 @@
 //            _timer.currentTime = 0;
 //            _bubbleBeatTimeStamp = 0;
 //        }
-        
+        _currentBubbleSpawnBeat = _bubbleQueue[0];
         _currentBubbleBeat = _queue[0];
         
-        if (_timer.currentTime >= _currentBubbleBeat.timeStamp * _beatLength && [_currentBubbleBeat.typeOfSlapNeeded isEqual:@"BubbleSpawn"])
+        //BubbleSpawnQueue
+        if (_timer.bubbleSpawnTime >= _currentBubbleSpawnBeat.timeStamp && [_currentBubbleSpawnBeat.typeOfSlapNeeded isEqual:@"BubbleSpawn"])
         {
             [self delayAllowanceOfBubbleBeat];
-            [self launchBubbleWithBeat:_currentBubbleBeat];
-            [self loadNewBubbleBeat];
+            [self launchBubbleWithBeat:_currentBubbleSpawnBeat];
+            [self loadNewBubbleSpawnBeat];
+            _timer.bubbleSpawnTime = 0;
         }
-        else
+        
+        
+        //BeatQueue
+        if (!_bubbleBeatRecognized && _timer.currentTime >= (_currentBubbleBeat.timeStamp*1.2))
         {
-            if (!_bubbleBeatRecognized && _timer.currentTime >= (_currentBubbleBeat.timeStamp*1.2))
-            {
-                _bubbleBeatTimeStamp = .2*_currentBubbleBeat.delay;
-                _timer.currentTime = .2*_currentBubbleBeat.delay;
-                _bubbleBeatRecognized = FALSE;
-                _allowBubbleBeat = TRUE;
-                _bubbleLaunched = FALSE;
-                
-                _bubbleBeatMessage.string = @"TOO LATE!";
-                Bubble* tempBubble = _bubbleArray[0];
-                [_bubbleArray removeObjectAtIndex:0];
-                [tempBubble burstWithColor: [CCColor redColor]];
-                [self setPercentage: -6* _currentBubbleBeat.timeStamp];
-                [self loadNewBubbleBeat];
-                
-                
-            }
-            else if (_bubbleBeatRecognized && _timer.currentTime >= _currentBubbleBeat.timeStamp)
-            {
-                _bubbleBeatTimeStamp = 0;
-                _timer.currentTime = 0;
-                _currentNumOfBeats +=_currentBubbleBeat.timeStamp;
-                _bubbleBeatRecognized = FALSE;
-                _allowBubbleBeat = TRUE;
-                _bubbleLaunched = FALSE;
-                [self loadNewBubbleBeat];
-                
-            }
+            _bubbleBeatTimeStamp = .2*_currentBubbleBeat.delay;
+            _timer.currentTime = .2*_currentBubbleBeat.delay;
+            _bubbleBeatRecognized = FALSE;
+            _allowBubbleBeat = TRUE;
+            _bubbleLaunched = FALSE;
+            
+            _bubbleBeatMessage.string = @"TOO LATE!";
+            Bubble* tempBubble = _bubbleArray[0];
+            [_bubbleArray removeObjectAtIndex:0];
+            [tempBubble burstWithColor: [CCColor redColor]];
+            [self setPercentage: -6* _currentBubbleBeat.timeStamp];
+            [self loadNewBubbleBeat];
+            
+            
+        }
+        else if (_bubbleBeatRecognized && _timer.currentTime >= _currentBubbleBeat.timeStamp)
+        {
+            _bubbleBeatTimeStamp = 0;
+            _timer.currentTime = 0;
+            _currentNumOfBeats +=_currentBubbleBeat.timeStamp;
+            _bubbleBeatRecognized = FALSE;
+            _allowBubbleBeat = TRUE;
+            _bubbleLaunched = FALSE;
+            [self loadNewBubbleBeat];
+            
         }
     }
 }
@@ -427,14 +434,19 @@
     {
         if (_delay == -1)
         {
-            _delay++;
+            _delay = [[e valueForKey: @"duration"] doubleValue];
+            BubbleBeat* firstSpawn = [[BubbleBeat alloc] initWithTime: _delay andDelay: _delay andType: @"BubbleSpawn"];
+            BubbleBeat* firstBeat = [[BubbleBeat alloc] initWithTime: (_delay + 1.5) andDelay: _delay andType: @"Beat"];
+            [_bubbleQueue addObject: firstSpawn];
+            [_queue addObject: firstBeat];
+            _delay = 0;
+            
         }
         else if ([[e valueForKey:@"confidence"] doubleValue] >= .6)
         {
-            double bubbleTapTime = .2 * _delay;
             BubbleBeat* thisBeat = [[BubbleBeat alloc] initWithTime:_delay andDelay:_delay andType:@"Beat"];
-            BubbleBeat* bubbleSpawnBeat = [[BubbleBeat alloc] initWithTime:(_delay - bubbleTapTime) andDelay:_delay andType:@"BubbleSpawn"];
-            [_queue addObject: bubbleSpawnBeat];
+            BubbleBeat* bubbleSpawnBeat = [[BubbleBeat alloc] initWithTime:_delay andDelay:_delay andType:@"BubbleSpawn"];
+            [_bubbleQueue addObject: bubbleSpawnBeat];
             [_queue addObject: thisBeat];
             _delay = 0;
         }
@@ -447,6 +459,11 @@
 {
     [_queue removeObjectAtIndex: 0];
 
+}
+
+-(void)  loadNewBubbleSpawnBeat
+{
+    [_bubbleQueue removeObjectAtIndex:0];
 }
 
 -(void) addScore: (int) score
@@ -468,6 +485,16 @@
 -(void) pause
 {
     
+}
+
+-(void) restart
+{
+    [[CCDirector sharedDirector] replaceScene: @"GamePlay"];
+}
+
+-(void) quit
+{
+    [[CCDirector sharedDirector] replaceScene: @"TitleScreen"];
 }
 
 @end

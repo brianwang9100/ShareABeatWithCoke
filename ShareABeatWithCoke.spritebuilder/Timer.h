@@ -12,4 +12,5 @@
 @property (assign, nonatomic) float currentTime;
 @property (assign, nonatomic) float comboTimeKeeper;
 @property (assign, nonatomic) float beatLength;
+@property (assign, nonatomic) float bubbleSpawnTime;
 @end
