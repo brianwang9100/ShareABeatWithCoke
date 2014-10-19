@@ -209,8 +209,8 @@
     if (!_bubbleLaunched)
     {
         Bubble* currentBubble = (Bubble*)[CCBReader load:@"Bubble"];
-        currentBubble.thisBeat = [[BubbleBeat alloc] initWithTime: (1.2 * beat.delay) andDelay: beat.delay andType:@"Beat"];
-        currentBubble.beatTime = .2 * beat.delay;
+        currentBubble.thisBeat = beat;
+        currentBubble.beatTime = .5;
 //        CCEffectGlass* glassEffect = [CCEffectGlass effectWithShininess: 1.0f refraction:.1f refractionEnvironment:_backGround.backGroundSprite reflectionEnvironment:_backGround.backGroundSprite];
 //        currentBubble.bubbleSpriteFrame.effect = glassEffect;
         [_bubbleArray addObject: currentBubble];
@@ -218,7 +218,7 @@
         float randomFinalYPosition = self.contentSizeInPoints.height/2 + [self randomFloat:50];
         currentBubble.position = ccp (randomInitialXPosition, -20);
         [self addChild: currentBubble];
-        CCActionMoveTo* move = [CCActionMoveTo actionWithDuration:.2 position:ccp(randomInitialXPosition, randomFinalYPosition)];
+        CCActionMoveTo* move = [CCActionMoveTo actionWithDuration:1 position:ccp(randomInitialXPosition, randomFinalYPosition)];
         CCActionEaseOut* easeIn = [CCActionEaseOut actionWithAction:move];
         [currentBubble runAction:easeIn];
         _bubbleLaunched = TRUE;
