@@ -72,13 +72,6 @@
 			remoteGlobalIDString = 5018F24C0DFDEAC400C013A5;
 			remoteInfo = cocos2d;
 		};
-		DF4CEA1419F3807E006AFDB5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DFDCB7CB19F25629007178E2 /* ENAPILibrary.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 7EE1166416A3213000A62D4D;
-			remoteInfo = ENAPILibraryTests;
-		};
 		DFDCB7D019F25629007178E2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = DFDCB7CB19F25629007178E2 /* ENAPILibrary.xcodeproj */;
@@ -356,7 +349,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				DF4CEA1519F3807E006AFDB5 /* PBXTargetDependency */,
 				DFDCB7D519F256CC007178E2 /* PBXTargetDependency */,
 				B7378989180764180076A88C /* PBXTargetDependency */,
 			);
@@ -512,11 +504,6 @@
 			name = cocos2d;
 			targetProxy = B7378988180764180076A88C /* PBXContainerItemProxy */;
 		};
-		DF4CEA1519F3807E006AFDB5 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = ENAPILibraryTests;
-			targetProxy = DF4CEA1419F3807E006AFDB5 /* PBXContainerItemProxy */;
-		};
 		DFDCB7D519F256CC007178E2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = ENAPILibrary;
@@ -596,7 +583,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -639,7 +626,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = ShareABeatWithCoke;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "f75829fe-1f96-4a58-948d-80868f5a0060";
 				USER_HEADER_SEARCH_PATHS = "\"Source/libs/ENAPILibrary/ENAPILibrary\" \"${SRCROOT}\"/..";
 				WRAPPER_EXTENSION = app;
 			};
@@ -653,7 +640,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -694,7 +681,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = ShareABeatWithCoke;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "f75829fe-1f96-4a58-948d-80868f5a0060";
 				USER_HEADER_SEARCH_PATHS = "\"Source/libs/ENAPILibrary/ENAPILibrary\" \"${SRCROOT}\"/..";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;

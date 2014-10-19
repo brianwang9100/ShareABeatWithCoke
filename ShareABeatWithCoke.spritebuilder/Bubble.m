@@ -36,7 +36,7 @@
     if (self.beatTime > 0)
     {
         self.beatTime -= delta;
-        self.timeLabel.string = [NSString stringWithFormat:@"%f", self.beatTime];
+        self.timeLabel.string = [NSString stringWithFormat:@"%.1f", self.beatTime];
     }
     else if (self.beatTime <=0)
     {

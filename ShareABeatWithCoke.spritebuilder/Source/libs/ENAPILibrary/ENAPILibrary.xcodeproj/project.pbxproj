@@ -390,6 +390,7 @@
 		7EE1167D16A3213000A62D4D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Brian Wang (WFG337ZWR6)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
@@ -398,6 +399,7 @@
 				GCC_PREFIX_HEADER = "ENAPILibrary/ENAPILibrary-Prefix.pch";
 				INFOPLIST_FILE = "ENAPILibraryTests/ENAPILibraryTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "f75829fe-1f96-4a58-948d-80868f5a0060";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
@@ -405,6 +407,7 @@
 		7EE1167E16A3213000A62D4D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Brian Wang (WFG337ZWR6)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
@@ -413,6 +416,7 @@
 				GCC_PREFIX_HEADER = "ENAPILibrary/ENAPILibrary-Prefix.pch";
 				INFOPLIST_FILE = "ENAPILibraryTests/ENAPILibraryTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "f75829fe-1f96-4a58-948d-80868f5a0060";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;

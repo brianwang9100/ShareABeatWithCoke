@@ -113,7 +113,7 @@
                 {
                     _bubbleBeatMessage.string = @"START!";
                     [self performSelector:@selector(startGame) withObject:nil afterDelay:_beatLength];
-                    //[_soundDriver performSelector:@selector(playSongFromURL:) withObject:@"spotify:track:6GCW5Muk3u0cM5QTkS4C9a" afterDelay: 2*_beatLength];
+                    [_soundDriver performSelector:@selector(playSongFromURL:) withObject:@"spotify:track:6GCW5Muk3u0cM5QTkS4C9a" afterDelay: 2*_beatLength];
                     //[self startGame];
                 }
                 else if (_gameCountdown == _defaultCountDown)
@@ -184,7 +184,7 @@
 //            Bubble* tempBubble = _bubbleArray[0];
 //            [_bubbleArray removeObjectAtIndex:0];
 //            [tempBubble burstWithColor: [CCColor redColor]];
-            [self setPercentage: -6* _currentBubbleBeat.timeStamp];
+            [self setPercentage: 6* _currentBubbleBeat.timeStamp];
             [self loadNewBubbleBeat];
             
             
@@ -210,7 +210,7 @@
     {
         Bubble* currentBubble = (Bubble*)[CCBReader load:@"Bubble"];
         currentBubble.thisBeat = beat;
-        currentBubble.beatTime = .5;
+        currentBubble.beatTime = 2.2;
 //        CCEffectGlass* glassEffect = [CCEffectGlass effectWithShininess: 1.0f refraction:.1f refractionEnvironment:_backGround.backGroundSprite reflectionEnvironment:_backGround.backGroundSprite];
 //        currentBubble.bubbleSpriteFrame.effect = glassEffect;
         [_bubbleArray addObject: currentBubble];
@@ -218,7 +218,7 @@
         float randomFinalYPosition = self.contentSizeInPoints.height/2 + [self randomFloat:100];
         currentBubble.position = ccp (randomInitialXPosition, -30);
         [self addChild: currentBubble];
-        CCActionMoveTo* move = [CCActionMoveTo actionWithDuration:1 position:ccp(randomInitialXPosition, randomFinalYPosition)];
+        CCActionMoveTo* move = [CCActionMoveTo actionWithDuration:1.25 position:ccp(randomInitialXPosition, randomFinalYPosition)];
         CCActionEaseOut* easeIn = [CCActionEaseOut actionWithAction:move];
         [currentBubble runAction:easeIn];
         _bubbleLaunched = TRUE;
