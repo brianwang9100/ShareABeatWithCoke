@@ -372,7 +372,6 @@
 				ORGANIZATIONNAME = Apportable;
 				TargetAttributes = {
 					B77F1B2D17B978D7009739AE = {
-						DevelopmentTeam = ALVVSFF263;
 						SystemCapabilities = {
 							com.apple.GameCenter = {
 								enabled = 0;
@@ -635,7 +634,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = ShareABeatWithCoke;
-				PROVISIONING_PROFILE = "eacce3a3-b17b-4ab8-be49-6ba00da36173";
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "\"Source/libs/ENAPILibrary/ENAPILibrary\" \"${SRCROOT}\"/..";
 				WRAPPER_EXTENSION = app;
 			};
@@ -690,7 +689,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = ShareABeatWithCoke;
-				PROVISIONING_PROFILE = "eacce3a3-b17b-4ab8-be49-6ba00da36173";
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "\"Source/libs/ENAPILibrary/ENAPILibrary\" \"${SRCROOT}\"/..";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
