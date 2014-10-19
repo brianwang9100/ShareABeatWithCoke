@@ -25,6 +25,10 @@ static NSString * const kTokenSwapURL = @"http://localhost:1234/swap";
     self.currentAnalysisURL = @"";
     self.currentSongURL = @"";
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didSendUpdateNotification:) name:@"ENTasteProfileLibrary.updateSent" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveUpdateCompleteNotification:) name:@"ENTasteProfileLibrary.updateComplete" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveSimilarQueryCompleteNotification:) name:@"ENTasteProfileLibrary.similarQueryComplete" object:nil];
+    
 }
 
 -(void) requestSongFromEchoNestRadio
