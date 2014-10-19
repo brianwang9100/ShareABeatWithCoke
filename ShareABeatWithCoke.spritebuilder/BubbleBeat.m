@@ -10,9 +10,10 @@
 
 @implementation BubbleBeat
 
--(id) initWithTime: (float) givenTimeStamp andType: (NSString*) type
+-(id) initWithTime: (float) givenTimeStamp andDelay: (float) givenDelayStamp andType: (NSString*) type
 {
     self.timeStamp = givenTimeStamp;
+    self.delay = givenDelayStamp;
     self.typeOfSlapNeeded = type;
     return self;
 }

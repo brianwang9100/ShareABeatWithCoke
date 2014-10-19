@@ -68,7 +68,10 @@ static NSString * const kTokenSwapURL = @"http://localhost:1234/swap";
 
 -(void) loadNextSong
 {
-    [_playList removeObjectAtIndex:0];
+    if (_playList != nil && _playList.count != 0)
+    {
+        [_playList removeObjectAtIndex:0];
+    }
 }
 
 -(NSArray*) retrieveSongDataSegments: (NSString*) analysisURL
@@ -87,6 +90,15 @@ static NSString * const kTokenSwapURL = @"http://localhost:1234/swap";
     NSError* error;
     NSMutableDictionary* json = [NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error: &error];
     return [json valueForKey:@"beats"];
+}
+
+-(double) retrieveSongDataTempo: (NSString*) analysisURL
+{
+    NSURL* url=[NSURL URLWithString: analysisURL];   // pass your URL  Here.
+    NSData* data=[NSData dataWithContentsOfURL:url];
+    NSError* error;
+    NSMutableDictionary* json = [NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error: &error];
+    return (double)[[json valueForKey:@"tracks"] doubleForKey:@"tempo"];
 }
 
 

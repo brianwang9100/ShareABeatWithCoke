@@ -33,5 +33,6 @@
 -(NSString*) extractSpotifySongFromRequest;
 -(void) requestSongFromEchoNestRadio;
 -(void) loadPlayListWithSong: (ENAPIRequest*)request;
+-(double) retrieveSongDataTempo: (NSString*) analysisURL;
 
 @end
